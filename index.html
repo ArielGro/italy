@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italy Itinerary Premium Full Text — Владимир Гродский</title>
+  <meta name="description" content="Премиальная версия маршрута по Италии с полным текстом из базового PDF, включая телефоны, GPS, заметки и все дневные блоки." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    :root {
+      --bg: #f4f1ea;
+      --surface: rgba(255,255,255,0.74);
+      --surface-strong: rgba(255,255,255,0.90);
+      --surface-soft: rgba(247,246,243,0.96);
+      --surface-dark: rgba(17,26,34,0.74);
+      --text: #1d2b38;
+      --muted: #677788;
+      --line: rgba(29,43,56,0.10);
+      --orange: #ec7f21;
+      --orange-2: #ff9a3d;
+      --blue: #22425d;
+      --sky: #2b8ee2;
+      --sky-soft: #e7f2fb;
+      --shadow: 0 24px 60px rgba(29,43,56,0.12);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1320px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(236,127,33,0.16), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(43,142,226,0.14), transparent 24%),
+        linear-gradient(180deg, #f7f4ee 0%, #f1ede6 100%);
+      line-height: 1.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(247,244,238,0.74);
+      border-bottom: 1px solid rgba(29,43,56,0.08);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: 0 12px 25px rgba(236,127,33,0.28);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font: 800 15px/1 Manrope, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(29,43,56,0.08);
+    }
+
+    .hero {
+      padding: 34px 0 22px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 74vh;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(17,26,34,0.30), rgba(17,26,34,0.66)),
+        url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/1a279663ba357b6650fabea52d93633001c37d84.jpg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,154,61,0.22), transparent 24%),
+        linear-gradient(180deg, rgba(17,26,34,0.10) 0%, rgba(17,26,34,0.76) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 40px;
+      min-height: 74vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-family: Manrope, sans-serif;
+      font-size: clamp(46px, 8vw, 94px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      color: white;
+      max-width: 13ch;
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.86);
+      font-size: clamp(18px, 2vw, 28px);
+      font-weight: 700;
+      max-width: 38ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: linear-gradient(135deg, var(--orange), var(--orange-2)); color: white; box-shadow: 0 12px 30px rgba(236,127,33,0.28); }
+    .btn-secondary { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(10px); }
+    .btn-map { background: var(--blue); color: white; padding: 10px 14px; font-size: 13px; }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      padding: 22px;
+      backdrop-filter: blur(18px);
+      color: white;
+    }
+
+    .hero-panel h3 {
+      margin: 0 0 14px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: rgba(255,255,255,0.76);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 18px 0 8px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 24px 0 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font: 800 clamp(28px, 3.2vw, 48px)/1 Manrope, sans-serif;
+      letter-spacing: -0.04em;
+      color: var(--blue);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .glass {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .summary-card {
+      padding: 24px;
+    }
+
+    .summary-card ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-card li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(29,43,56,0.07);
+    }
+
+    .num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #44a7f1, #2b8ee2);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 20px;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .summary-card span { color: var(--muted); }
+
+    .map-card { overflow: hidden; min-height: 100%; }
+    .map-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 20px 0;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(29,43,56,0.08);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .map-embed { padding: 16px 20px 20px; }
+    .map-frame {
+      width: 100%;
+      min-height: 470px;
+      border: 0;
+      border-radius: 24px;
+      background: #e6ebf0;
+    }
+
+    .hotels {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .hotel-card { padding: 18px; }
+    .hotel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hotel-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(236,127,33,0.12), rgba(43,142,226,0.12));
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+    }
+
+    .hotel-card strong {
+      display: block;
+      font-size: 18px;
+      color: var(--blue);
+    }
+
+    .hotel-card p {
+      margin: 6px 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .full-pdf {
+      padding: 10px 0 0;
+    }
+
+    .day-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      background: var(--surface-strong);
+      border: 1px solid rgba(255,255,255,0.76);
+      margin-bottom: 22px;
+      scroll-margin-top: 96px;
+    }
+
+    .day-cover {
+      min-height: 220px;
+      position: relative;
+      display: flex;
+      align-items: end;
+      padding: 24px;
+      color: white;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dolomites { background-image: linear-gradient(180deg, rgba(12,22,28,0.12), rgba(12,22,28,0.74)), url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/1a279663ba357b6650fabea52d93633001c37d84.jpg'); }
+    .garda { background-image: linear-gradient(180deg, rgba(12,22,28,0.18), rgba(12,22,28,0.74)), url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/46d88fdeba9f33f560b6e59f397110cea562fbab.jpg'); }
+    .como { background-image: linear-gradient(180deg, rgba(12,22,28,0.18), rgba(12,22,28,0.76)), url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6616d21c4ef59a90b7139cafa22d76856305af67.jpg'); }
+    .neutral { background-image: linear-gradient(180deg, rgba(12,22,28,0.24), rgba(12,22,28,0.72)), url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/ad4831f55793f01b4d8350c53d20cbc861bcd691.jpg'); }
+
+    .day-cover .label {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .day-cover h3 {
+      margin: 0;
+      font: 800 clamp(28px, 3vw, 48px)/1.02 Manrope, sans-serif;
+      letter-spacing: -0.04em;
+      max-width: 16ch;
+    }
+
+    .day-cover p {
+      margin: 10px 0 0;
+      max-width: 70ch;
+      color: rgba(255,255,255,0.84);
+      font-weight: 500;
+    }
+
+    .day-body { padding: 18px; }
+    .theme-note {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 12px;
+    }
+
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 980px;
+      background: rgba(255,255,255,0.40);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    th, td {
+      vertical-align: top;
+      padding: 14px 12px;
+      border-right: 1px solid rgba(29,43,56,0.08);
+      border-bottom: 1px solid rgba(29,43,56,0.08);
+      font-size: 15px;
+    }
+
+    th:last-child, td:last-child { border-right: none; }
+    tr:last-child td { border-bottom: none; }
+
+    th {
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    th.loc {
+      width: 22%;
+      color: var(--blue);
+      background: rgba(236,240,244,0.85);
+    }
+
+    th.route {
+      width: 46%;
+      color: white;
+      background: var(--blue);
+    }
+
+    th.notes {
+      width: 32%;
+      color: #0d6fce;
+      background: #e8f2fb;
+      border-left: 2px solid var(--sky);
+    }
+
+    td.loc {
+      background: rgba(248,249,250,0.82);
+      font-weight: 800;
+      color: #36485c;
+    }
+
+    td.route {
+      background: rgba(255,255,255,0.52);
+      color: #374758;
+    }
+
+    td.notes {
+      background: rgba(232,242,251,0.86);
+      color: #1672d5;
+      border-left: 2px solid var(--sky);
+    }
+
+    .time {
+      display: block;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .gps {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px;
+      margin: 3px 0;
+      border-radius: 8px;
+      background: rgba(236,127,33,0.08);
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .route-text p, .notes-text p { margin: 0 0 8px; }
+    .route-text p:last-child, .notes-text p:last-child { margin-bottom: 0; }
+
+    .route-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .routes-card {
+      padding: 22px;
+      margin-top: 22px;
+    }
+
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .route-link {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(29,43,56,0.08);
+      text-decoration: none;
+    }
+
+    .route-link strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .route-link span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 36px 0 64px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-content,
+      .overview-grid,
+      .hotels,
+      .routes-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .shell, .topbar-inner { width: min(calc(100% - 20px), var(--max)); }
+      .topbar-inner { flex-direction: column; align-items: flex-start; }
+      .nav { display: none; }
+      .hero-card, .hero-content { min-height: auto; }
+      .hero-content { padding: 24px; }
+      .hero-card { border-radius: 24px; }
+      h1 { font-size: 44px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .day-cover { min-height: 200px; padding: 18px; }
+      .day-body, .summary-card, .routes-card { padding: 16px; }
+    }
+  
+    .flight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+    .flight-card{padding:18px}
+    .flight-card h3{margin:0 0 8px;font:800 18px/1.1 Manrope,sans-serif;color:var(--blue)}
+    .flight-card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .flight-links{display:flex;gap:10px;flex-wrap:wrap}
+    @media (max-width:760px){.flight-grid{grid-template-columns:1fr}}
+
+  
+    .weather-card{padding:18px;margin:0 0 16px}
+    .weather-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+    .weather-head strong{font:800 18px/1.1 Manrope,sans-serif;color:var(--blue)}
+    .weather-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(43,142,226,0.10);color:var(--blue);font-size:13px;font-weight:800}
+
+  
+    .weather-card{padding:14px 18px;margin:0 18px 14px;background:rgba(255,255,255,0.62)}
+    .weather-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+    .weather-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(43,142,226,0.10);color:var(--blue);font-size:12px;font-weight:800}
+    .weather-icon{display:flex;align-items:center;gap:8px;color:var(--text)}
+    .weather-update{margin-top:10px}
+
+  
+    :root{--ui-bg:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/1a279663ba357b6650fabea52d93633001c37d84.jpg')}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg, rgba(245,242,235,0.68), rgba(245,242,235,0.90)), var(--ui-bg) center/cover no-repeat;filter:saturate(1.05)}
+    
+    
+    .lang-switch,.mode-switch{display:flex;gap:8px;flex-wrap:wrap}.switch-btn.active{box-shadow:0 0 0 2px rgba(43,142,226,.18) inset;transform:translateY(-1px)}
+    .switch-btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(29,43,56,0.10);background:rgba(255,255,255,0.72);font-weight:800;font-size:13px;cursor:pointer}
+    
+    
+    .weather-card{padding:16px 18px;margin:0 18px 14px;overflow:hidden;position:relative;background:rgba(255,255,255,0.70)}
+    .weather-card::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.18;pointer-events:none}
+    .weather-card.sunny::before{background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/2a3c11691af8080e230210183a726b5933be0276.jpg')}
+    .weather-card.cloudy::before{background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/ad4831f55793f01b4d8350c53d20cbc861bcd691.jpg')}
+    .weather-card.rainy::before{background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/46d88fdeba9f33f560b6e59f397110cea562fbab.jpg')}
+    .weather-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:center;position:relative}
+    .weather-big{display:flex;align-items:center;gap:14px}
+    .weather-icon-big{font-size:44px;line-height:1}
+    .weather-meta{display:flex;flex-wrap:wrap;gap:8px}
+    .weather-bar{height:10px;border-radius:999px;background:rgba(43,142,226,.12);overflow:hidden;margin-top:10px}
+    .weather-bar>i{display:block;height:100%;background:linear-gradient(90deg,#2b8ee2,#ec7f21);width:50%}
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .chart-wrap{padding:18px}
+
+  
+            .toggle-rail.on     .toggle-rail[data-toggle="mode"]     .toggle-rail[data-toggle="lang"] 
+  
+    .toggle-rail,    .toggle-rail::after{content:''}
+
+  
+    .controls-row{display:flex;gap:12px;align-items:center;margin-left:12px;flex-wrap:wrap}
+        .toggle-rail::before{content:'';position:absolute;inset:0;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.06))}
+        .toggle-rail.on     .toggle-rail[data-toggle="mode"]     .toggle-label{font:800 12px/1 Inter,sans-serif;color:var(--muted);min-width:44px;text-align:center}.toggle-rail[data-toggle="lang"]     .toggle-rail,
+  
+    .switch{position:relative;display:inline-block;width:58px;height:30px;vertical-align:middle}
+    .switch input{opacity:0;width:0;height:0;position:absolute}
+    .slider-track{position:absolute;inset:0;background:rgba(130,145,160,.32);border-radius:999px;transition:background .25s ease;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+    .slider-knob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.22);transition:transform .25s ease, background .25s ease}
+    .switch input:checked + .slider-track{background:#2b3a55}
+    .switch input:checked + .slider-track .slider-knob{transform:translateX(28px);background:radial-gradient(circle at 30% 30%, #fff8d5 0%, #ffcb62 55%, #ea9b23 100%)}
+    .toggle-label{font:800 12px/1 Inter,sans-serif;color:var(--muted);min-width:44px;text-align:center}
+
+  
+    body.night{
+      --bg:#0f0d0b;
+      --surface: rgba(30,22,16,0.78);
+      --surface-strong: rgba(24,18,13,0.94);
+      --surface-soft: rgba(22,16,12,0.92);
+      --surface-dark: rgba(10,8,6,0.9);
+      --text:#f3eadf;
+      --muted:#c9b8a4;
+      --line: rgba(255,255,255,0.12);
+      --blue:#ffd9a0;
+      --sky:#ffb673;
+      --sky-soft: rgba(255,183,115,0.16);
+      --shadow: 0 24px 60px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg,#100c0a 0%,#1b1511 100%) !important;
+      color: var(--text) !important;
+    }
+    body.night::before{
+      background: linear-gradient(180deg, rgba(12,9,7,0.90), rgba(12,9,7,0.96)),
+        url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/ad4831f55793f01b4d8350c53d20cbc861bcd691.jpg') center/cover no-repeat !important;
+      filter: saturate(.8) brightness(.45) !important;
+    }
+    body.night .topbar{ background: rgba(16,12,9,0.88) !important; border-bottom-color: rgba(255,255,255,0.10) !important; }
+    body.night .nav a{ background: rgba(255,255,255,0.07) !important; color: var(--text) !important; }
+    body.night .glass{ background: var(--surface) !important; border-color: rgba(255,255,255,0.10) !important; color: var(--text) !important; }
+    body.night .day-card{ background: var(--surface-strong) !important; border-color: rgba(255,255,255,0.10) !important; }
+    body.night .hero-card{ box-shadow: 0 24px 60px rgba(0,0,0,0.6) !important; }
+    body.night .hero-panel{ background: rgba(255,255,255,0.07) !important; border-color: rgba(255,255,255,0.14) !important; }
+    body.night .summary-card li{ background: rgba(255,255,255,0.06) !important; }
+    body.night .hotel-card{ background: var(--surface) !important; }
+    body.night .routes-card{ background: var(--surface) !important; }
+    body.night .weather-card{ background: var(--surface) !important; }
+    body.night .weather-card::before{ opacity: .10 !important; }
+    body.night .weather-chip{ background: rgba(255,183,115,0.16) !important; color: var(--blue) !important; }
+    body.night .btn-map, body.night .btn{ background: rgba(255,255,255,0.10) !important; color: var(--text) !important; border-color: rgba(255,255,255,0.16) !important; }
+    body.night .section-head h2{ color: var(--blue) !important; }
+    body.night .section-head p{ color: var(--muted) !important; }
+    body.night h1, body.night h2, body.night h3, body.night p, body.night span, body.night strong, body.night li{ color: var(--text) !important; }
+    body.night .hero-sub{ color: rgba(255,255,255,0.86) !important; }
+    body.night .toggle-label{ color: var(--muted) !important; }
+
+  body{transition:background 0.3s ease, color 0.3s ease} .glass, .day-card, .weather-card{transition:background 0.3s ease, border-color 0.3s ease, color 0.3s ease}
+  
+    /* Comprehensive, high-contrast Dark Mode: visual overrides only */
+    html.dark, html.dark body, body.night {
+      background: #0d0a08 !important;
+      color: #f8efe3 !important;
+    }
+    html.dark body::before, body.night::before {
+      background: linear-gradient(180deg, rgba(8,6,5,.93), rgba(14,9,6,.97)) !important;
+      filter: none !important;
+    }
+    html.dark .topbar, body.night .topbar { background:#15100c !important; border-bottom-color:#3e2d20 !important; }
+    html.dark .glass, html.dark .day-card, html.dark .weather-card, html.dark .hotel-card, html.dark .routes-card,
+    html.dark .summary-card, html.dark .flight-card,
+    body.night .glass, body.night .day-card, body.night .weather-card, body.night .hotel-card, body.night .routes-card,
+    body.night .summary-card, body.night .flight-card {
+      background: #1a120d !important;
+      border-color: #493224 !important;
+      color: #f8efe3 !important;
+      box-shadow: 0 22px 54px rgba(0,0,0,.58) !important;
+    }
+    html.dark .summary-card li, body.night .summary-card li { background:#100b08 !important; border:1px solid #3a281c !important; }
+    html.dark .nav a, body.night .nav a { background:#21170f !important; color:#ffe0ad !important; border-color:#4d3525 !important; }
+    html.dark .weather-chip, body.night .weather-chip { background:#2a1b11 !important; color:#ffe0ad !important; border-color:#614128 !important; }
+    html.dark .btn, html.dark .btn-map, body.night .btn, body.night .btn-map { background:#2b1b10 !important; color:#fff3d8 !important; border-color:#6b482c !important; }
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark p, html.dark span, html.dark strong, html.dark li,
+    body.night h1, body.night h2, body.night h3, body.night h4, body.night p, body.night span, body.night strong, body.night li { color:#f8efe3 !important; }
+    html.dark .section-head h2, body.night .section-head h2 { color:#ffe0ad !important; }
+    html.dark .section-head p, html.dark .toggle-label, body.night .section-head p, body.night .toggle-label { color:#d7bfaa !important; }
+    html.dark table, html.dark th, html.dark td, body.night table, body.night th, body.night td { background:#17100c !important; color:#f8efe3 !important; border-color:#4a3324 !important; }
+    html.dark .weather-card::before, body.night .weather-card::before { opacity:.05 !important; }
+
+  
+    /* Mobile & tablet hardening: iPhone, iPad and Android */
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+    img, iframe, canvas { max-width: 100%; }
+    button, a { touch-action: manipulation; }
+    .btn, .btn-map, .switch, .slider-track, .nav a { min-height: 44px; }
+    .map-frame { width: 100%; min-height: 360px; border: 0; }
+    #weatherChart { display:block; width:100% !important; height:auto !important; }
+    @supports (padding: max(0px)) {
+      .topbar { padding-left: max(0px, env(safe-area-inset-left)); padding-right: max(0px, env(safe-area-inset-right)); }
+      body { padding-bottom: env(safe-area-inset-bottom); }
+    }
+    @media (max-width: 900px) {
+      .shell, .topbar-inner { width: min(calc(100% - 28px), var(--max)); }
+      .topbar-inner { gap: 12px; }
+      .nav { gap: 7px; }
+      .nav a { padding: 9px 11px; font-size: 13px; }
+      .controls-row { margin-left: 0; }
+      .flight-grid, .overview-grid, .hotels, .routes-grid { grid-template-columns: 1fr !important; }
+      .hero-content { grid-template-columns: 1fr; }
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { min-width: 720px; }
+    }
+    @media (max-width: 600px) {
+      .shell, .topbar-inner { width: calc(100% - 20px); }
+      .topbar { position: sticky; }
+      .topbar-inner { padding: 10px 0; align-items: flex-start; }
+      .brand { max-width: 100%; }
+      .brand-copy strong { font-size: 14px; }
+      .brand-copy span { font-size: 11px; }
+      .nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+      .nav a { white-space: nowrap; flex: 0 0 auto; }
+      .controls-row { width: 100%; justify-content: flex-start; }
+      .section { padding: 10px 0 4px; }
+      .section-head { margin: 20px 0 12px; align-items: flex-start; }
+      .section-head h2 { font-size: clamp(26px, 8vw, 36px); }
+      .flight-grid { gap: 12px; }
+      .flight-card, .hotel-card, .summary-card, .routes-card { padding: 16px !important; }
+      .weather-card { margin: 0 0 12px !important; padding: 14px !important; }
+      .weather-head { align-items:flex-start; flex-wrap:wrap; }
+      .weather-chip { font-size: 11px; padding: 7px 9px; }
+      .weather-big { gap: 10px; }
+      .weather-icon-big { font-size: 38px; }
+      .btn-row, .flight-links { gap: 8px; }
+      .btn, .btn-map { padding: 10px 12px; font-size: 13px; }
+      .day-card { border-radius: 22px; }
+      .day-card .table-wrap { border-radius: 0 0 22px 22px; }
+      .map-frame { min-height: 300px; }
+      #weatherChart { min-width: 720px; max-width: none; }
+      .chart-wrap, .routes-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19c3-5.6 6.5-8.4 10.4-8.4 2.4 0 4.6.9 6.6 2.7"></path>
+            <path d="M12 4l1.7 3.3 3.6.5-2.6 2.5.6 3.6-3.3-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5L12 4Z" fill="currentColor" stroke="none"></path>
+          </svg>
+        </div>
+        <div class="brand-copy">
+          <strong>Italy Itinerary Premium</strong>
+          <span>Полный текст из PDF внутри сайта</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#overview">Обзор</a>
+        <a href="#map">Карта</a>
+        <a href="#stays">Отели</a>
+        <a href="#full-pdf">Полный маршрут</a>
+        <a href="#routes">Google Maps</a>
+      </nav>
+      <div class="controls-row">
+        <span class="toggle-label">Light</span>
+        <label class="switch">
+          <input type="checkbox" id="mode-toggle" onchange="setMode(this.checked ? 'night' : 'day')">
+          <span class="slider-track"><span class="slider-knob"></span></span>
+        </label>
+        <span class="toggle-label">Dark</span>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div>
+            <div class="eyebrow">Premium + Full PDF text</div>
+            <h1>Весь текст из базового PDF сохранён в сайте</h1>
+            <div class="hero-sub">Я оставил премиальный стиль сайта, карту, hotel icons и кнопки Google Maps, но вернул внутрь сайта абсолютно весь текст из базового PDF — включая телефоны, GPS, заметки и формулировки.</div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#full-pdf">Открыть полный маршрут</a>
+              <a class="btn btn-secondary" href="#map">К карте</a>
+            </div>
+          </div>
+          <aside class="hero-panel">
+            <h3>Что сохранено</h3>
+            <div class="stats">
+              <div class="stat"><strong>100%</strong><span>текста из PDF</span></div>
+              <div class="stat"><strong>+390683662959</strong><span>телефон проката</span></div>
+              <div class="stat"><strong>12</strong><span>полных дней</span></div>
+              <div class="stat"><strong>3</strong><span>базы проживания</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="flights">
+      <div class="section-head">
+        <div>
+          <h2>Полеты туда-обратно</h2>
+          <p>Две карточки на первой странице с прямыми ссылками на FlightAware и Manage Booking для обоих рейсов.</p>
+        </div>
+      </div>
+      <div class="flight-grid">
+        
+        <article class="glass flight-card">
+          <h3>Туда — 28 июля 2026</h3>
+          <p>BZ154 · Tel Aviv (TLV) → Milan Bergamo (BGY)</p>
+          <div class="flight-links">
+            <a class="btn btn-map" href="https://www.flightaware.com/live/flight/BBG154" target="_blank" rel="noopener noreferrer">FlightAware</a>
+            <a class="btn btn-map" href="https://my.bluebirdair.com/login" target="_blank" rel="noopener noreferrer">Manage Booking</a>
+          </div>
+        </article>
+        <article class="glass flight-card">
+          <h3>Обратно — 8 августа 2026</h3>
+          <p>BZ151 · Milan Bergamo (BGY) → Tel Aviv (TLV)</p>
+          <div class="flight-links">
+            <a class="btn btn-map" href="https://www.flightaware.com/live/flight/BBG151" target="_blank" rel="noopener noreferrer">FlightAware</a>
+            <a class="btn btn-map" href="https://my.bluebirdair.com/login" target="_blank" rel="noopener noreferrer">Manage Booking</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-head">
+        <div>
+          <h2>Обзор маршрута</h2>
+          <p>Тут сохранён титульный блок из PDF и краткая структура всех четырёх частей маршрута, но сам полный контент ниже приведён уже без сокращений.</p>
+        </div>
+      </div>
+      <div class="overview-grid">
+        <div class="glass summary-card">
+          <ol>
+            <li><div class="num">1</div><div><strong>Дни 1-2: Прибытие и Альпы</strong><span>Прилет в Бергамо, Паганелла, Озеро Мольвено</span></div></li>
+            <li><div class="num">2</div><div><strong>Дни 3-5: Доломитовые Альпы и Наука</strong><span>Озеро Карецца, Перевалы Селла и Гардена, Гора Сечеда, Озеро Товель, Каякинг, Музей MUSE</span></div></li>
+            <li><div class="num">3</div><div><strong>Дни 6-8: Водопады и Озеро Гарда</strong><span>Долина водопадов Трентино, Полуостров Сирмионе, Movieland Park, Отдых на пляже</span></div></li>
+            <li><div class="num">4</div><div><strong>Дни 9-12: Очарование Озера Комо</strong><span>Шопинг Franciacorta, Белладжо, Менаджо, Варенна, Рынок в Колико</span></div></li>
+          </ol>
+        </div>
+        <div class="glass map-card" id="map">
+          <div class="map-toolbar">
+            <div class="chip">🗺️ Карта маршрута</div>
+            <div class="chip">🚗 Bergamo → Dolomites → Garda → Como</div>
+            <a class="chip" href="https://www.google.com/maps/dir/Bergamo/Altopiano+della+Paganella/Ortisei/Moniga+del+Garda/Colico" target="_blank" rel="noopener noreferrer">Открыть маршрут в Google Maps</a>
+          </div>
+          <div class="map-embed">
+            <iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bergamo,Altopiano%20della%20Paganella,Ortisei,Moniga%20del%20Garda,Colico&z=7&output=embed" title="Карта маршрута по Италии"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stays">
+      <div class="section-head">
+        <div>
+          <h2>Базы проживания</h2>
+          <p>Отели и базы оставлены как в премиальной версии, с иконками и быстрыми переходами на Google Maps.</p>
+        </div>
+      </div>
+      <div class="hotels">
+        <article class="glass hotel-card">
+          <div class="hotel-top">
+            <div class="hotel-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12"></path><path d="M8 20v-5h8v5"></path><path d="M8 10h.01"></path><path d="M16 10h.01"></path></svg>
+            </div>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Alps+Lover+Trentino" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          </div>
+          <strong>Alps Lover</strong>
+          <p>Первая база маршрута.</p>
+        </article>
+        <article class="glass hotel-card">
+          <div class="hotel-top">
+            <div class="hotel-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 10h.01"></path><path d="M15 10h.01"></path><path d="M12 21v-5"></path></svg>
+            </div>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Villa+Paradiso+Suite+Moniga+del+Garda" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          </div>
+          <strong>Villa Paradiso Suite</strong>
+          <p>База на Garda.</p>
+        </article>
+        <article class="glass hotel-card">
+          <div class="hotel-top">
+            <div class="hotel-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"></path><path d="M16 10h2a2 2 0 0 1 2 2v8"></path><path d="M8 8h.01"></path><path d="M8 12h.01"></path><path d="M12 8h.01"></path><path d="M12 12h.01"></path></svg>
+            </div>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Via+Montecchio+Nord+Colico" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          </div>
+          <strong>Via Montecchio Nord, Colico</strong>
+          <p>Финальная база на Como.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section full-pdf" id="full-pdf">
+      <div class="section-head">
+        <div>
+          <h2>Полный маршрут из PDF</h2>
+          <p>Ниже — полный текст маршрута внутри сайта, без удаления содержания: с телефонами, GPS, заметками, “дизайнерскими советами” и оригинальной структурой по дням.</p>
+        </div>
+      </div>
+
+      <article class="day-card" id="cover-page">
+        <div class="day-cover neutral">
+          <div>
+            <div class="label">Титульная страница PDF</div>
+            <h3>План путешествия по Италии</h3>
+            <p>28 июля — 8 августа 2026 года | Путешественник: Владимир Гродский. Концепция маршрута: Интенсивные первые дни в Альпах и Доломитах, сменяющиеся расслабленным отдыхом на озерах Гарда и Комо.</p>
+          </div>
+        </div>
+        <div class="day-body">
+          <p class="theme-note">Италия Панорама</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="loc">Раздел</th>
+                  <th class="route">Содержание</th>
+                  <th class="notes">Краткий блок</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="loc">1</td>
+                  <td class="route"><div class="route-text"><p>Дни 1-2: Прибытие и Альпы</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Прилет в Бергамо, Паганелла, Озеро Мольвено</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">2</td>
+                  <td class="route"><div class="route-text"><p>Дни 3-5: Доломитовые Альпы и Наука</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Озеро Карецца, Перевалы Селла и Гардена, Гора Сечеда, Озеро Товель, Каякинг, Музей MUSE</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">3</td>
+                  <td class="route"><div class="route-text"><p>Дни 6-8: Водопады и Озеро Гарда</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Долина водопадов Трентино, Полуостров Сирмионе, Movieland Park, Отдых на пляже</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">4</td>
+                  <td class="route"><div class="route-text"><p>Дни 9-12: Очарование Озера Комо</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Шопинг Franciacorta, Белладжо, Менаджо, Варенна, Рынок в Колико</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-1">
+        <div class="day-cover dolomites">
+          <div>
+            <div class="label">День 1</div>
+            <h3>День 1: 28 июля 2026 (Вторник) — Переезд в Италию</h3>
+            <p>Панорама предгорий Альп</p>
+          </div>
+        </div>
+        <div class="day-body">
+          <p class="theme-note">Панорама предгорий Альп</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-2">min --°</span><span class="weather-chip" id="weather-max-2">max --°</span><span class="weather-chip" id="weather-rain-2">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-2">⏳</div><div><div style="font-weight:800">День 2</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-2"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Старт (Израиль)<span class="time">10:00</span></td>
+                  <td class="route"><div class="route-text"><p>Общественный транспорт из Кирьят-Моцкин <a class="gps" href="https://www.google.com/maps/search/?api=1&query=32.83296,35.06992" target="_blank" rel="noopener noreferrer">📍 GPS: 32.83296, 35.06992</a> до аэропорта Бен-Гурион. Поезд отправляется в 10:05, прибытие в Терминал 3 <a class="gps" href="https://www.google.com/maps/search/?api=1&query=32.00096,34.87104" target="_blank" rel="noopener noreferrer">📍 GPS: 32.00096, 34.87104</a> примерно в 11:20. Перелет в международный аэропорт Орио-аль-Серио <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.66907,9.70504" target="_blank" rel="noopener noreferrer">📍 GPS: 45.66907, 9.70504</a>. После получения багажа выход из терминала, поворот налево, пройти ~300м до парковки P1 EST. Шаттл CentauroRent a Car ходит каждые 10-15 минут.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Проверьте билеты заранее. Прибытие в аэропорт с комфортным запасом времени.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Аэропорт Бергамо<span class="time">Вечер</span></td>
+                  <td class="route"><div class="route-text"><p>Контакты проката: +390683662959.</p><div class="route-buttons"><a class="btn btn-map" href="tel:+390683662959">Позвонить</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Orio+al+Serio+Airport" target="_blank" rel="noopener noreferrer">Аэропорт на карте</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Пройдите онлайн-регистрацию заранее для ускорения процесса.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Закупка продуктов<span class="time">До заселения</span></td>
+                  <td class="route"><div class="route-text"><p>Два варианта супермаркетов по пути:</p><p>1. Iperal Azzano San Paolo (работает до 20:30).</p><p>2. Iper Seriate (работает до 21:30).</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Ориентируйтесь по времени прилета. Если задерживаетесь — строго выбирайте Iper Seriate.</p><p>Дизайнерский совет: Взять в дорогу удобные перекусы для ребенка — это поможет сгладить усталость от первого переезда.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Ужин и Заселение<span class="time">Поздний вечер</span></td>
+                  <td class="route"><div class="route-text"><p>По пути возможна остановка в McDonald's <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.55113,10.78848" target="_blank" rel="noopener noreferrer">📍 GPS: 45.55113, 10.78848</a> — только если будете успевать. Финишная точка дня — апартаменты Alps Lover. Суммарный пробег за день: ~223 км.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.55113,10.78848" target="_blank" rel="noopener noreferrer">McDonald's</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Alps+Lover+Trentino" target="_blank" rel="noopener noreferrer">Alps Lover</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>День признан изнурительным («Exhausting day»). Постарайтесь сразу лечь спать — завтра ранний подъем.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-2">
+        <div class="day-cover dolomites"><div><div class="label">День 2</div><h3>День 2: 29 июля 2026 (Среда) — Альпийские приключения</h3><p>Горы и природа</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Горы и природа</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-3">min --°</span><span class="weather-chip" id="weather-max-3">max --°</span><span class="weather-chip" id="weather-rain-3">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-3">⏳</div><div><div style="font-weight:800">День 3</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-3"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Супермаркет<span class="time">Утро</span></td>
+                  <td class="route"><div class="route-text"><p>Выезд из Alps Lover, короткая поездка (11 км) до супермаркета Eurospin <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.20744,11.10075" target="_blank" rel="noopener noreferrer">📍 GPS: 46.20744, 11.10075</a>.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Важно: Не забудьте купить сумку-холодильник или переносной холодильник для хранения продуктов в машине!</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Гора Паганелла<span class="time">День</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд до станции подъемника Santel <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.17533,11.05261" target="_blank" rel="noopener noreferrer">📍 GPS: 46.17533, 11.05261</a>. Парковка (~20€).</p><p>1. Подъем на канатной дороге до Roller Coaster Zipline Meriz <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.16381,11.05063" target="_blank" rel="noopener noreferrer">📍 GPS: 46.16381, 11.05063</a>. Время на аттракцион: 1 час, стоимость ~30€.</p><p>2. Дальнейший подъем до вершины Cima Paganella <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.14390,11.03770" target="_blank" rel="noopener noreferrer">📍 GPS: 46.14390, 11.03770</a>. Обзор видов. Возврат к машине в Santel.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.17533,11.05261" target="_blank" rel="noopener noreferrer">Santel</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.14390,11.03770" target="_blank" rel="noopener noreferrer">Cima Paganella</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Рассчитывайте время так, чтобы приехать на подъемник к открытию или до полуденных очередей.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Озеро Мольвено<span class="time">Вторая половина дня</span></td>
+                  <td class="route"><div class="route-text"><p>Поездка до живописного озера Lago di Molveno <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.14159,10.96792" target="_blank" rel="noopener noreferrer">📍 GPS: 46.14159, 10.96792</a>. Стоимость парковки Valbinaghe ~5€. Прогулка у воды, отдых после активного дня. Возвращение в отель Alps Lover.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.14159,10.96792" target="_blank" rel="noopener noreferrer">Lago di Molveno</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Интенсивность дня: расслабленная («Easy-going day»). Идеальный баланс после тяжелого переезда.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-3">
+        <div class="day-cover dolomites"><div><div class="label">День 3</div><h3>День 3: 30 июля 2026 (Четверг) — Перевалы Доломитовых Альп</h3><p>Доломитовые Альпы</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Доломитовые Альпы</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-4">min --°</span><span class="weather-chip" id="weather-max-4">max --°</span><span class="weather-chip" id="weather-rain-4">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-4">⏳</div><div><div style="font-weight:800">День 4</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-4"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Озеро Карецца<span class="time">Раннее утро</span></td>
+                  <td class="route"><div class="route-text"><p>Karersee (Lago di Carezza) <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.4109,11.5763" target="_blank" rel="noopener noreferrer">📍 GPS: 46.4109, 11.5763</a>. Остановка на 15 минут. Знаменитые отражения лазурной воды и горного массива. Далее короткая остановка на перевале Karerpass <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.40428,11.60899" target="_blank" rel="noopener noreferrer">📍 GPS: 46.40428, 11.60899</a>.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.4109,11.5763" target="_blank" rel="noopener noreferrer">Karersee</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.40428,11.60899" target="_blank" rel="noopener noreferrer">Karerpass</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Критично: Ранний выезд! Нужно успеть сделать «вау-стоп» до приезда экскурсионных автобусов.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Перевалы Sella и Gardena<span class="time">День</span></td>
+                  <td class="route"><div class="route-text"><p>Движение через Canazei Parking <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.47664,11.77277" target="_blank" rel="noopener noreferrer">📍 GPS: 46.47664, 11.77277</a>. Проезд точек панорамного обзора без длительных остановок. Главные точки: Passo Sella Parking <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.50953,11.75705" target="_blank" rel="noopener noreferrer">📍 GPS: 46.50953, 11.75705</a> и Gardena Pass <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.54982,11.80839" target="_blank" rel="noopener noreferrer">📍 GPS: 46.54982, 11.80839</a>. Время на перевале Гардена - около 2 часов.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.50953,11.75705" target="_blank" rel="noopener noreferrer">Passo Sella</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.54982,11.80839" target="_blank" rel="noopener noreferrer">Gardena Pass</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Один из самых сильных видовых Loops на маршруте. Наслаждайтесь панорамами прямо из окон авто. В Канацеи лучше остановиться на быстрый обед (паста/джелато) до полудня.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Гора Сечеда (Seceda)<span class="time">После обеда</span></td>
+                  <td class="route"><div class="route-text"><p>Прибытие в Ортизеи. Проще всего оставить машину на крытой парковке в центре (Parkgarage Central). Подъем на Funivie Seceda <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.57642,11.67507" target="_blank" rel="noopener noreferrer">📍 GPS: 46.57642, 11.67507</a>. Время на вершине: 1-1.5 часа. Самая мощная аэропанорама в Валь-Гардене.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.57642,11.67507" target="_blank" rel="noopener noreferrer">Funivie Seceda</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Обязательно проверьте время последнего спуска канатной дороги онлайн! Не задерживайтесь слишком поздно, иначе сдвинется ужин.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Больцано<span class="time">Вечер</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд в Больцано (~37 км). Парковка на Piazza della Vittoria <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.50067,11.34339" target="_blank" rel="noopener noreferrer">📍 GPS: 46.50067, 11.34339</a>. Пешая прогулка (1.3 км) до исторического ресторана Batzenhäusl <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.50136,11.35744" target="_blank" rel="noopener noreferrer">📍 GPS: 46.50136, 11.35744</a>. Средний чек ~75€. После ужина возврат к машине и дорога в Alps Lover (~55 км).</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>День признан изнурительным («Exhausting day»). Суммарный пробег составит около 242 км.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-4">
+        <div class="day-cover dolomites"><div><div class="label">День 4</div><h3>День 4: 31 июля 2026 (Пятница) — Трекинг у озера Товель</h3><p>Озеро и Каякинг</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Озеро и Каякинг</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-5">min --°</span><span class="weather-chip" id="weather-max-5">max --°</span><span class="weather-chip" id="weather-rain-5">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-5">⏳</div><div><div style="font-weight:800">День 5</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-5"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Mondo Melinda<span class="time">10:00</span></td>
+                  <td class="route"><div class="route-text"><p>Короткий переезд до Mondo Melinda <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.29853,11.07035" target="_blank" rel="noopener noreferrer">📍 GPS: 46.29853, 11.07035</a> — интерактивного центра и магазина знаменитых яблок долины Валь-ди-Нон. Визит на 1 час.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Отличное место для покупки местных специалитетов, яблочных чипсов и штруделя.</p><p>Дизайнерский совет: Детям особенно понравятся интерактивные зоны и яблочные дегустации!</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Озеро Товель<span class="time">11:30-14:30</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд к озеру. Парковка на ближайшей к воде зоне P1 Parcheggio Lago <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.26667,10.95353" target="_blank" rel="noopener noreferrer">📍 GPS: 46.26667, 10.95353</a>. План на 2 часа: Легкий круговой променад по тропе вокруг озера (45-60 минут). Остановки на фото на северном и западном берегу. Обед-пикник за специальными столами Picnic Table <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.25910,10.94939" target="_blank" rel="noopener noreferrer">📍 GPS: 46.25910, 10.94939</a>.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.26667,10.95353" target="_blank" rel="noopener noreferrer">Parcheggio Lago</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.25910,10.94939" target="_blank" rel="noopener noreferrer">Picnic Table</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Место очень популярно. Если P1 заполнена, используйте Lavacel (P2) или Tamburello (P4), но от них идти дольше. Прогулка доступна для любого возраста, формат "без перегруза, но с вау-эффектом".</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Каякинг в каньоне<span class="time">15:30</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд (18.5 км) в ursus adventures <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.35198,11.06223" target="_blank" rel="noopener noreferrer">📍 GPS: 46.35198, 11.06223</a>. Водный тур на каяках или каноэ по ущелью Рио-Новелла (Gole del Rio Novella). Уникальные узкие скальные коридоры. После окончания возвращение в Alps Lover.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.35198,11.06223" target="_blank" rel="noopener noreferrer">ursus adventures</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>День умеренно сложный («Challenging day»). Смена активностей (пешая прогулка + водный каньонинг) сделает его незабываемым. Забронируйте каяки заранее.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-5">
+        <div class="day-cover dolomites"><div><div class="label">День 5</div><h3>День 5: 1 августа 2026 (Суббота) — Наука и культура Тренто</h3><p>Городская архитектура</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Городская архитектура</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-6">min --°</span><span class="weather-chip" id="weather-max-6">max --°</span><span class="weather-chip" id="weather-rain-6">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-6">⏳</div><div><div style="font-weight:800">День 6</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-6"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Музей MUSE и старт<span class="time">10:00 – 13:00</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд в Тренто. Парковка на подземной стоянке MUSE parking <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.06262,11.11483" target="_blank" rel="noopener noreferrer">📍 GPS: 46.06262, 11.11483</a>. Посещение ультрасовременного музея науки MUSE (билет ~15€). Время внутри: 2 часа.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.06262,11.11483" target="_blank" rel="noopener noreferrer">MUSE parking</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Если парковка MUSE полная, используйте Piazzale Sanseverino или Area ex Zuffo (GPS: 46.07596, 11.10973). Музей обязателен к посещению всей семьей.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Обед и исторический центр<span class="time">13:00 – 15:00</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком от MUSE до центра города (10-15 минут). Обязательный сладкий стоп в знаменитой кондитерской-джелатерии Gelateria La Romana <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.06820,11.11885" target="_blank" rel="noopener noreferrer">📍 GPS: 46.06820, 11.11885</a>. Далее прогулка до Piazza del Duomo и осмотр Трентского собора (Trento Cathedral) <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.06691,11.12156" target="_blank" rel="noopener noreferrer">📍 GPS: 46.06691, 11.12156</a>.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Для полноценного сытного обеда ИИ рекомендует: Osteria Ai Frati (вкусно и спокойно) либо Forsterbräu Trento (традиционная тирольская и сытная кухня).</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Замок Буонконсильо<span class="time">15:00 – 17:30</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком (10 минут) по историческим улицам до Buonconsiglio Castle <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.07142,11.12648" target="_blank" rel="noopener noreferrer">📍 GPS: 46.07142, 11.12648</a>. Осмотр старинных фресок и башен замка (вход ~15€). После экскурсии возврат к машине у MUSE (14 минут пешком).</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.07142,11.12648" target="_blank" rel="noopener noreferrer">Buonconsiglio Castle</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>На обратном пути в отель можно заехать в Eurospin для пополнения запасов продуктов. Суммарный пробег за день: ~62 км.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-6">
+        <div class="day-cover garda"><div><div class="label">День 6</div><h3>День 6: 2 августа 2026 (Воскресенье) — Водопады и переезд</h3><p>Водопад</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Водопад</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-7">min --°</span><span class="weather-chip" id="weather-max-7">max --°</span><span class="weather-chip" id="weather-rain-7">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-7">⏳</div><div><div style="font-weight:800">День 7</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-7"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Замки по пути<span class="time">09:00 – 11:30</span></td>
+                  <td class="route"><div class="route-text"><p>Финальный чек-аут из Alps Lover. Первая остановка через 30 минут - Castel Caldes <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.36578,10.94584" target="_blank" rel="noopener noreferrer">📍 GPS: 46.36578, 10.94584</a> для панорамных кадров снаружи. Далее переезд к долине водопадов.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Внимание: Сегодня чрезвычайно насыщенный день. Пешеходная часть составит более 10.5 км!</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Трекинг водопадов<span class="time">11:30 – 16:30</span></td>
+                  <td class="route"><div class="route-text"><p>Прибытие к Cascate Nardis <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.16962,10.71440" target="_blank" rel="noopener noreferrer">📍 GPS: 46.16962, 10.71440</a> — осмотр грандиозного водопада. Затем переезд до Cascata di Lares Bassa <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.16376,10.66213" target="_blank" rel="noopener noreferrer">📍 GPS: 46.16376, 10.66213</a>. Большой пеший трек: марш-бросок мимо каскадов Casina Muta и Pedruc к уединенной горной хижине Rifugio Adamello Collini al Bedole <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.19767,10.59676" target="_blank" rel="noopener noreferrer">📍 GPS: 46.19767, 10.59676</a>. Обед и отдых в хижине.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.16962,10.71440" target="_blank" rel="noopener noreferrer">Cascate Nardis</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.19767,10.59676" target="_blank" rel="noopener noreferrer">Rifugio Adamello</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Наденьте проверенную трекинговую обувь. Возьмите с собой ветровки или дождевики — возле водопадов сильная водяная пыль.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Дорога к Гарде<span class="time">16:30 – 19:30</span></td>
+                  <td class="route"><div class="route-text"><p>Движение на юг к озеру Гарда через живописный Canyon Del Limaro и озерный замок Castel Toblino <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.05464,10.96721" target="_blank" rel="noopener noreferrer">📍 GPS: 46.05464, 10.96721</a>. Финальный аккорд — посещение знаменитого пещерного водопада Cascata del Varone возле Рива-дель-Гарда.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Грот Вароне подсвечивается изнутри, это зрелище стоит того, чтобы успеть до закрытия вечерних касс.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Villa Paradiso Suite<span class="time">20:30</span></td>
+                  <td class="route"><div class="route-text"><p>Прибытие и вечернее заселение в Villa Paradiso Suite в городке Монига-дель-Гарда <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.52481,10.54320" target="_blank" rel="noopener noreferrer">📍 GPS: 45.52481, 10.54320</a>. Общий пробег за день: ~213 км. Суммарное время в пути и на ногах около 20 часов.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.52481,10.54320" target="_blank" rel="noopener noreferrer">Villa Paradiso Suite</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Один из самых тяжелых дней поездки («Exhausting day»). Отдыхайте, впереди более мягкий темп.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-7">
+        <div class="day-cover garda"><div><div class="label">День 7</div><h3>День 7: 3 августа 2026 (Понедельник) — Сирмионе и Movieland</h3><p>Озеро Гарда</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Озеро Гарда</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-8">min --°</span><span class="weather-chip" id="weather-max-8">max --°</span><span class="weather-chip" id="weather-rain-8">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-8">⏳</div><div><div style="font-weight:800">День 8</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-8"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Итальянский рынок<span class="time">09:00</span></td>
+                  <td class="route"><div class="route-text"><p>Короткий выезд на центральную площадь Piazza San Martino в Монига-дель-Гарда <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.52938,10.53654" target="_blank" rel="noopener noreferrer">📍 GPS: 45.52938, 10.53654</a>. Понедельник - официальный день проведения здесь традиционного еженедельного рынка.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Отличное место для погружения в аутентичную атмосферу. Купите фермерский сыр, оливки и свежие фрукты.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Полуостров Сирмионе<span class="time">10:30 – 13:30</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд в Сирмионе. Парковка автомобиля на большой парковке у въезда Parcheggio Monte Baldo (<a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.48701,10.61013" target="_blank" rel="noopener noreferrer">📍 GPS: 45.48701, 10.61013</a>, стоимость ~5€). Пешком через старый город до самой оконечности мыса к археологическому комплексу Гроты Катулла (Grottoes of Catullus) (<a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.50133,10.60673" target="_blank" rel="noopener noreferrer">📍 GPS: 45.50133, 10.60673</a>, билет ~12€). Время визита 2 часа. Возврат к парковке Monte Baldo.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.48701,10.61013" target="_blank" rel="noopener noreferrer">Monte Baldo</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.50133,10.60673" target="_blank" rel="noopener noreferrer">Гроты Катулла</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Старайтесь приехать в Сирмионе как можно раньше, места на парковке Monte Baldo разбирают моментально. На полуострове очень жарко, возьмите головные уборы.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Movieland Park<span class="time">14:00 – 18:00</span></td>
+                  <td class="route"><div class="route-text"><p>Переезд на восточный берег. Парковка Park Caneva World (<a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.48041,10.73025" target="_blank" rel="noopener noreferrer">📍 GPS: 45.48041, 10.73025</a>, стоимость ~5€). Посещение тематического парка аттракционов Movieland, посвященного кинобизнесу и спецэффектам. Визит на 2-3 часа. Вечером возвращение в Villa Paradiso Suite. Общий автомобильный пробег за день: ~72.5 км.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.48041,10.73025" target="_blank" rel="noopener noreferrer">Park Caneva World</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Сбалансированный, комфортный день («Balanced day»). Аттракционы парка понравятся и взрослым, и детям.</p><p>Дизайнерский совет: Идеальный план для поездки с ребенком — здесь масса эмоций и это не так утомительно, как длинные пешие треки!</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-8">
+        <div class="day-cover garda"><div><div class="label">День 8</div><h3>День 8: 4 августа 2026 (Вторник) — Отдых на озере Гарда</h3><p>Лодка на воде</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Лодка на воде</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-9">min --°</span><span class="weather-chip" id="weather-max-9">max --°</span><span class="weather-chip" id="weather-rain-9">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-9">⏳</div><div><div style="font-weight:800">День 9</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-9"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Пляжный отдых<span class="time">Первая половина дня</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком от апартаментов до благоустроенного местного пляжа Пляж <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.52374,10.54468" target="_blank" rel="noopener noreferrer">📍 GPS: 45.52374, 10.54468</a>. Купание, чистейшая вода озера, отдых.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.52374,10.54468" target="_blank" rel="noopener noreferrer">Пляж</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Идеальный день для полной перезагрузки («Relaxing day») в середине насыщенного отпуска.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Аренда лодки<span class="time">После обеда</span></td>
+                  <td class="route"><div class="route-text"><p>Короткая прогулка до причала Moniga Boat Rent <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.51859,10.53445" target="_blank" rel="noopener noreferrer">📍 GPS: 45.51859, 10.53445</a>. Аренда моторного катера для самостоятельной водной прогулки по Гарде.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.51859,10.53445" target="_blank" rel="noopener noreferrer">Moniga Boat Rent</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Для большинства прогулочных лодок в Италии не требуются специальные права. Посмотрите на виллы западного побережья или Сирмионе с воды. Ночевка в Villa Paradiso Suite.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-9">
+        <div class="day-cover como"><div><div class="label">День 9</div><h3>День 9: 5 августа 2026 (Среда) — Шопинг и переезд</h3><p>Озеро Комо</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Озеро Комо</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-10">min --°</span><span class="weather-chip" id="weather-max-10">max --°</span><span class="weather-chip" id="weather-rain-10">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-10">⏳</div><div><div style="font-weight:800">День 10</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-10"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Аутлет Franciacorta<span class="time">10:00 – 12:30</span></td>
+                  <td class="route"><div class="route-text"><p>Финальный чек-аут из Мониги. Дорога до крупного шопинг-центра Franciacorta Designer Village <a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.57651,10.11824" target="_blank" rel="noopener noreferrer">📍 GPS: 45.57651, 10.11824</a>. Время работы в среду: 10:00 – 20:00. Прогулка по брендовым магазинам, обед на территории комплекса.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.57651,10.11824" target="_blank" rel="noopener noreferrer">Franciacorta</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Аутлет расположен по пути к озеру Комо, что минимизирует лишний пробег. Удобная большая парковка.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Аббатство Пиона<span class="time">15:00 – 17:00</span></td>
+                  <td class="route"><div class="route-text"><p>Длительный переезд на север озера Комо (~117 км). Посещение тихого и уединенного древнего монастыря Abbazia di Piona <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.12360,9.32981" target="_blank" rel="noopener noreferrer">📍 GPS: 46.12360, 9.32981</a>, расположенного на живописном мысе верхней части Комо. Открыто для туристов до 18:00. Здесь можно купить ликеры, сделанные монахами.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.12360,9.32981" target="_blank" rel="noopener noreferrer">Abbazia di Piona</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Прекрасное историческое место с потрясающими панорамами.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Пляж и Заселение<span class="time">Вечер</span></td>
+                  <td class="route"><div class="route-text"><p>Короткий переезд на Piona Beach <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.12467,9.34681" target="_blank" rel="noopener noreferrer">📍 GPS: 46.12467, 9.34681</a> отдых на траве, вечерние закатные кадры над озером. Далее переезд в город Колико и заселение в новые апартаменты на Via Montecchio Nord <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.13893,9.37261" target="_blank" rel="noopener noreferrer">📍 GPS: 46.13893, 9.37261</a>. Суммарный автомобильный пробег за день: ~184 км.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.12467,9.34681" target="_blank" rel="noopener noreferrer">Piona Beach</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.13893,9.37261" target="_blank" rel="noopener noreferrer">Via Montecchio Nord</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Интенсивность дня: умеренно расслабленная («Easy-going day»). Вы приедете в Колико к ужину с мягким вечерним светом.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-10">
+        <div class="day-cover como"><div><div class="label">День 10</div><h3>День 10: 6 августа 2026 (Четверг) — Озеро Комо</h3><p>Виды Варенны</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Виды Варенны</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-11">min --°</span><span class="weather-chip" id="weather-max-11">max --°</span><span class="weather-chip" id="weather-rain-11">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-11">⏳</div><div><div style="font-weight:800">День 11</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-11"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Поезд до Варенны<span class="time">Утро (08:37 / 09:14)</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком от апартаментов до ж/д станции Colico <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.13815,9.37554" target="_blank" rel="noopener noreferrer">📍 GPS: 46.13815, 9.37554</a>. Поезд R13 до станции Varenna-Esino-Perledo <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.01509,9.28623" target="_blank" rel="noopener noreferrer">📍 GPS: 46.01509, 9.28623</a> Стоимость билета ~2.7€, время в пути около 20-25 минут. Пешком 4 минуты до причала Navigazione Lago di Como.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.13815,9.37554" target="_blank" rel="noopener noreferrer">Colico station</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.01509,9.28623" target="_blank" rel="noopener noreferrer">Varenna-Esino-Perledo</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Главный совет: Оставьте машину в Колико! Перемещение на поездах и паромах спасет вас от катастрофических проблем с парковкой в узких городах центрального Комо.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Белладжо (Bellagio)<span class="time">Дневной блок</span></td>
+                  <td class="route"><div class="route-text"><p>Паром Варенна – Белладжо (<a class="gps" href="https://www.google.com/maps/search/?api=1&query=45.98738,9.26010" target="_blank" rel="noopener noreferrer">📍 GPS: 45.98738, 9.26010</a>, время в пути ~40 минут). Самое открыточное место на озере. Что посмотреть: Сады виллы Мельци (Villa Melzi Gardens), мыс La Punta Spartivento (вид на три рукава озера), прогулка по лестницам старого центра. Летний обед с аперитивом у воды.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=45.98738,9.26010" target="_blank" rel="noopener noreferrer">Bellagio</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Если останется свободное время обязательно загляните в Borgo di Pescallo, это тихий, невероятно фотогеничный рыбацкий квартал.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Менаджо (Menaggio)<span class="time">После обеда</span></td>
+                  <td class="route"><div class="route-text"><p>Паром Белладжо – Менаджо (<a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.01732,9.23725" target="_blank" rel="noopener noreferrer">📍 GPS: 46.01732, 9.23725</a>, время в пути ~15-35 минут). Более спокойный и размеренный город. Что посмотреть: Прогулочная променада вдоль набережной (Lakeshore promenade), чашка кофе на Piazza Garibaldi, осмотр узких исторических улочек.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.01732,9.23725" target="_blank" rel="noopener noreferrer">Menaggio</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Попробуйте джелато на центральной площади Менаджо идеальная пауза в середине дня. Здесь темп заметно медленнее, чем в Белладжо.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Варенна (Varenna)<span class="time">Предвечерний блок</span></td>
+                  <td class="route"><div class="route-text"><p>Паром Менаджо - Варенна. Прогулка по знаменитой "Тропе влюбленных" (Lovers' Walk) вдоль скалы над водой. Осмотр садов Villa Monastero. Подъем к средневековому замку Вецио (Castello di Vezio) ради лучшей панорамы на центр Комо.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>На ужин в Варенне рекомендуется взять традиционную озерную рыбу или классическое ризотто.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Возврат в Колико<span class="time">Поздний вечер</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком до станции Варенна, вечерний поезд R13 (например, в 20:37 или позже) обратно в Колико. Возвращение в апартаменты на Via Montecchio Nord. Интенсивность дня: сбалансированная («Balanced day»).</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Купите единый круговой билет на паром («Middle Lake ticket») в кассе Варенны утром, чтобы не стоять в очередях на каждом причале.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-11">
+        <div class="day-cover como"><div><div class="label">День 11</div><h3>День 11: 7 августа 2026 (Пятница) — Рыночный день в Колико</h3><p>Рынок</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Рынок</p>
+          <div class="glass weather-card cloudy">
+            <div class="weather-grid">
+              <div>
+                <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-min-12">min --°</span><span class="weather-chip" id="weather-max-12">max --°</span><span class="weather-chip" id="weather-rain-12">rain -- mm</span></div>
+                <div class="weather-big"><div class="weather-icon-big" id="weather-icon-12">⏳</div><div><div style="font-weight:800">День 12</div><div class="weather-meta"><span class="weather-chip">auto refresh</span><span class="weather-chip">live</span></div></div></div>
+                <div class="weather-bar"><i id="weather-bar-12"></i></div>
+                <div class="btn-row"><button class="btn btn-map" onclick="loadDayWeather()">Обновить данные</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Еженедельный рынок<span class="time">08:00 – 13:00</span></td>
+                  <td class="route"><div class="route-text"><p>Пешком 2 минуты (214 метров) от апартаментов до места проведения еженедельного рынка в Колико <a class="gps" href="https://www.google.com/maps/search/?api=1&query=46.13812,9.37396" target="_blank" rel="noopener noreferrer">📍 GPS: 46.13812, 9.37396</a> на Viale Padania. Большая ярмарка местных продуктов, сыров, колбас, аксессуаров и одежды в оживленной итальянской атмосфере.</p><div class="route-buttons"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=46.13812,9.37396" target="_blank" rel="noopener noreferrer">Viale Padania</a></div></div></td>
+                  <td class="notes"><div class="notes-text"><p>Идеальное время для неспешных покупок гастрономических сувениров перед отъездом домой. Пообщайтесь с местными торговцами.</p></div></td>
+                </tr>
+                <tr>
+                  <td class="loc">Отдых в Колико<span class="time">Вторая половина дня</span></td>
+                  <td class="route"><div class="route-text"><p>Свободное время, прогулка по набережной Колико, сбор вещей, отдых в апартаментах на Via Montecchio Nord. Время на ногах: минимальное (~428 метров).</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Расслабленный финальный день («Relaxing day») перед долгой обратной дорогой.</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card" id="day-12">
+        <div class="day-cover como"><div><div class="label">День 12</div><h3>День 12: 8 августа 2026 (Суббота) — Выезд из Колико</h3><p>Утро на озере</p></div></div>
+        <div class="day-body">
+          <p class="theme-note">Утро на озере</p>
+          <div class="glass weather-card">
+            <div class="weather-head"><span class="weather-chip">Погода</span><span class="weather-chip" id="weather-temp-PLACEHOLDER">--°</span></div>
+            <div class="weather-icon" id="weather-icon-PLACEHOLDER" style="font-size:28px;line-height:1">⏳</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="loc">ЛОКАЦИЯ / ВРЕМЯ</th><th class="route">МАРШРУТ И ДЕТАЛИ</th><th class="notes">ПОМЕТКИ ИИ И СОВЕТЫ</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="loc">Чек-аут<span class="time">06:13 (Восход солнца)</span></td>
+                  <td class="route"><div class="route-text"><p>Финальный чек-аут из апартаментов на Via Montecchio Nord (Колико). Завершение большого путешествия по северной Италии. Дорога в аэропорт / возврат арендованного автомобиля.</p></div></td>
+                  <td class="notes"><div class="notes-text"><p>Счастливого пути! Проверьте, чтобы в машине не остались личные вещи и сумка-холодильник.</p><p>Дизайнерский совет: Прекрасное завершение незабываемого семейного путешествия!</p></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    
+    <section class="section" id="weather-chart">
+      <div class="section-head">
+        <div>
+          <h2>График погоды</h2>
+          <p>Температура и осадки по всем 12 дням, с кнопкой обновления данных в каждой карточке погоды.</p>
+        </div>
+      </div>
+      <div class="glass routes-card">
+        <canvas id="weatherChart" width="1200" height="420" style="width:100%;height:auto;border-radius:24px;background:#fff"></canvas>
+      </div>
+    </section>
+
+    <section class="section" id="routes">
+      <div class="section-head">
+        <div>
+          <h2>Быстрые ссылки Google Maps</h2>
+          <p>Дополнительный блок карт оставлен, но основной контент теперь полностью раскрыт в дневных таблицах выше.</p>
+        </div>
+      </div>
+      <div class="glass routes-card">
+        <div class="routes-grid">
+          <a class="route-link" href="https://www.google.com/maps/dir/Orio+al+Serio+Airport/Alps+Lover+Trentino" target="_blank" rel="noopener noreferrer"><strong>Аэропорт → Alps Lover</strong><span>Стартовый вечер после прилета.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Alps+Lover+Trentino/Lago+di+Carezza/Funivie+Seceda/Bolzano" target="_blank" rel="noopener noreferrer"><strong>Dolomites scenic day</strong><span>Carezza, Seceda и Больцано.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Alps+Lover+Trentino/Lago+di+Tovel/MUSE+Trento" target="_blank" rel="noopener noreferrer"><strong>Tovel + Trento</strong><span>Озеро, каякинг и музейный день.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Alps+Lover+Trentino/Cascate+Nardis/Villa+Paradiso+Suite+Moniga+del+Garda" target="_blank" rel="noopener noreferrer"><strong>Переезд к Гарде</strong><span>Через водопады и длинный трек-день.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Villa+Paradiso+Suite+Moniga+del+Garda/Sirmione/Movieland+Park" target="_blank" rel="noopener noreferrer"><strong>Sirmione + Movieland</strong><span>Комфортный семейный день.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Villa+Paradiso+Suite+Moniga+del+Garda/Franciacorta+Designer+Village/Abbazia+di+Piona/Colico" target="_blank" rel="noopener noreferrer"><strong>Garda → Como</strong><span>Шопинг и переезд на финальную базу.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/dir/Colico/Varenna/Bellagio/Menaggio/Varenna/Colico" target="_blank" rel="noopener noreferrer"><strong>Lake Como loop</strong><span>Варенна, Белладжо и Менаджо.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/search/?api=1&query=Moniga+Boat+Rent" target="_blank" rel="noopener noreferrer"><strong>Boat rent on Garda</strong><span>Причал для водной прогулки.</span></a>
+          <a class="route-link" href="https://www.google.com/maps/search/?api=1&query=Viale+Padania+Colico" target="_blank" rel="noopener noreferrer"><strong>Рынок в Colico</strong><span>Финальный relaxed-день.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Премиальная версия сайта обновлена так, чтобы полный текст базового PDF остался внутри сайта без удаления содержания, включая телефоны, GPS и заметки.
+    </footer>
+  </main>
+
+  
+
+  
+
+  
+
+  
+  
+
+<script>
+    const weatherPoints = ['Bergamo, Italy','Molveno, Italy','Carezza, Italy','Tovel, Italy','Trento, Italy','Riva del Garda, Italy','Sirmione, Italy','Moniga del Garda, Italy','Franciacorta, Italy','Piona, Italy','Varenna, Italy','Colico, Italy'];
+
+    const dict = {
+      ru: { nav:['Обзор','Карта','Отели','Полный маршрут','График погоды'], heroTitle:'Полный сайт маршрута', heroSub:'Полный маршрут из PDF сохранён, с живой погодой, картами и переключением светлый/тёмный.', overview:'Обзор маршрута', map:'Карта маршрута', stays:'Отели', fullRoute:'Полный маршрут из PDF', weatherChart:'График погоды', weather:'Погода', update:'Обновить данные' },
+      en: { nav:['Overview','Map','Stays','Full route','Weather chart'], heroTitle:'Full itinerary site', heroSub:'The full PDF route is preserved, with live weather, maps and light/dark switching.', overview:'Route overview', map:'Route map', stays:'Stays', fullRoute:'Full route from PDF', weatherChart:'Weather chart', weather:'Weather', update:'Update data' }
+    };
+
+    function setMode(mode){
+      localStorage.setItem('mode', mode);
+      if(mode === 'night') {
+        document.body.classList.add('night');
+        document.documentElement.classList.add('dark');
+      } else {
+        document.body.classList.remove('night');
+        document.documentElement.classList.remove('dark');
+      }
+      const cb=document.getElementById('mode-toggle');
+      if(cb) cb.checked = (mode==='night');
+    }
+
+    function applyPrefs(){
+      const lang=localStorage.getItem('lang')||'ru';
+      const mode=localStorage.getItem('mode')||'day';
+      document.documentElement.lang = lang;
+      document.documentElement.dir='ltr';
+      translateUI(lang);
+      setMode(mode);
+    }
+
+    function translateUI(lang){
+      const t=dict[lang]||dict.ru;
+      document.querySelectorAll('.nav a').forEach((a,i)=>{ if(t.nav[i]) a.textContent=t.nav[i]; });
+      const h2s=document.querySelectorAll('.section-head h2');
+      if(h2s[0]) h2s[0].textContent=t.overview;
+      if(h2s[1]) h2s[1].textContent=t.map;
+      if(h2s[2]) h2s[2].textContent=t.stays;
+      if(h2s[3]) h2s[3].textContent=t.fullRoute;
+      if(h2s[4]) h2s[4].textContent=t.weatherChart;
+      const heroTitle=document.querySelector('h1'); if(heroTitle) heroTitle.textContent=t.heroTitle;
+      const heroSub=document.querySelector('.hero-sub'); if(heroSub) heroSub.textContent=t.heroSub;
+      document.querySelectorAll('.weather-chip').forEach(ch=>{ if(['Погода','Weather'].includes(ch.textContent)) ch.textContent=t.weather; });
+      document.querySelectorAll('.btn-map').forEach(b=>{ if(['Обновить данные','Update data'].includes(b.textContent)) b.textContent=t.update; });
+    }
+
+    function codeToIcon(code){ code=parseInt(code||'113',10); if([113].includes(code)) return '☀️'; if([116,119].includes(code)) return '⛅'; if([122,143].includes(code)) return '☁️'; if([176,263,266,293,296,299,302,305,308,353,356,359].includes(code)) return '🌧️'; if([200,386,389,392,395].includes(code)) return '⛈️'; if([179,182,185,227,230].includes(code)) return '❄️'; return '🌡️'; }
+    function bgClass(code){ code=parseInt(code||'113',10); if([113,116].includes(code)) return 'sunny'; if([122,143,176,263,266,293,296,299,302,305,308,353,356,359].includes(code)) return 'rainy'; return 'cloudy'; }
+
+    async function loadDayWeather(){
+      const temps=[], mins=[], rains=[];
+      for(let i=0;i<weatherPoints.length;i++){
+        const minEl=document.getElementById(`weather-min-${i+1}`);
+        const maxEl=document.getElementById(`weather-max-${i+1}`);
+        const rainEl=document.getElementById(`weather-rain-${i+1}`);
+        const iconEl=document.getElementById(`weather-icon-${i+1}`);
+        const card=document.querySelector(`[data-weather-day="${i+1}"]`);
+        const bar=document.getElementById(`weather-bar-${i+1}`);
+        try{
+          const data=await fetch('https://wttr.in/'+encodeURIComponent(weatherPoints[i])+'?format=j1').then(r=>r.json());
+          const cur=data.current_condition[0];
+          const day=data.weather?.[0] || {};
+          const icon=codeToIcon(cur.weatherCode);
+          if(minEl) minEl.textContent=`min ${day.mintempC || cur.temp_C}°`;
+          if(maxEl) maxEl.textContent=`max ${day.maxtempC || cur.temp_C}°`;
+          if(rainEl) rainEl.textContent=`rain ${day.totalprecipMM || 0} mm`;
+          if(iconEl) iconEl.textContent=icon;
+          if(card){ card.classList.remove('sunny','cloudy','rainy'); card.classList.add(bgClass(cur.weatherCode)); }
+          const t=Number(day.maxtempC || cur.temp_C); const mn=Number(day.mintempC || cur.temp_C); const r=Number(day.totalprecipMM || 0);
+          temps.push(t); mins.push(mn); rains.push(r);
+          if(bar) bar.style.width = Math.max(15, Math.min(100, r*20 + (t-8)*2)) + '%';
+        }catch(e){
+          if(minEl) minEl.textContent='min --°'; if(maxEl) maxEl.textContent='max --°'; if(rainEl) rainEl.textContent='rain -- mm'; if(iconEl) iconEl.textContent='🌡️'; if(bar) bar.style.width='15%'; temps.push(0); mins.push(0); rains.push(0);
+        }
+      }
+      drawWeatherChart(temps, mins, rains);
+    }
+
+    function drawWeatherChart(temps, mins, rains){
+      const c=document.getElementById('weatherChart'); if(!c) return;
+      const ctx=c.getContext('2d'); const w=c.width, h=c.height;
+      const left=74, right=74, top=56, bottom=58, plotW=w-left-right, plotH=h-top-bottom;
+      const maxT=Math.max(30, Math.ceil(Math.max(...temps, 1)/5)*5);
+      const minT=Math.min(0, Math.floor(Math.min(...mins, 0)/5)*5);
+      const maxR=Math.max(5, Math.ceil(Math.max(...rains, 1)/5)*5);
+      const x=i=>left+(plotW/(temps.length-1))*i;
+      const yT=v=>top+plotH-((v-minT)/(maxT-minT))*plotH;
+      const yR=v=>top+plotH-(v/maxR)*plotH;
+      ctx.clearRect(0,0,w,h); ctx.fillStyle='rgba(255,255,255,.92)'; ctx.fillRect(0,0,w,h);
+      ctx.font='700 12px Inter, sans-serif'; ctx.textAlign='right';
+      for(let v=minT; v<=maxT; v+=5){ const y=yT(v); ctx.strokeStyle='rgba(112,130,145,.22)'; ctx.lineWidth=1; ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();ctx.fillStyle='#6d7d8d';ctx.fillText(`${v}°`,left-10,y+4); }
+      ctx.textAlign='left'; for(let v=0; v<=maxR; v+=5){ const y=yR(v);ctx.fillStyle='#4d9cd7';ctx.fillText(`${v} mm`,w-right+10,y+4); }
+      for(let i=0;i<temps.length;i++){ const px=x(i);ctx.strokeStyle='rgba(112,130,145,.18)';ctx.beginPath();ctx.moveTo(px,top);ctx.lineTo(px,top+plotH);ctx.stroke();ctx.fillStyle='#617384';ctx.font='800 12px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(`День ${i+1}`,px,h-26); }
+      ctx.textAlign='left';ctx.font='800 13px Inter, sans-serif';ctx.fillStyle='#d7761e';ctx.fillText('Макс. температура (°C)',left,26);ctx.fillStyle='#6856c9';ctx.fillText('Мин. температура (°C)',left+220,26);ctx.fillStyle='#2b8ee2';ctx.fillText('Осадки (mm)',left+450,26);
+      // max temperature
+      ctx.beginPath();ctx.strokeStyle='#ec7f21';ctx.lineWidth=3.5;temps.forEach((t,i)=>{const px=x(i),py=yT(t);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);});ctx.stroke();
+      temps.forEach((t,i)=>{const px=x(i),py=yT(t);ctx.fillStyle='#ec7f21';ctx.beginPath();ctx.arc(px,py,5,0,Math.PI*2);ctx.fill();ctx.fillStyle='#9b4b0c';ctx.font='800 12px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(`${Math.round(t)}°`,px,py-12);});
+      // min temperature
+      ctx.beginPath();ctx.strokeStyle='#6b5bd2';ctx.lineWidth=3;ctx.setLineDash([3,4]);mins.forEach((t,i)=>{const px=x(i),py=yT(t);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);});ctx.stroke();ctx.setLineDash([]);
+      mins.forEach((t,i)=>{const px=x(i),py=yT(t);ctx.fillStyle='#6b5bd2';ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill();ctx.fillStyle='#4d3cb7';ctx.font='800 11px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(`${Math.round(t)}°`,px,py+18);});
+      // precipitation
+      ctx.beginPath();ctx.strokeStyle='#2b8ee2';ctx.setLineDash([7,5]);ctx.lineWidth=3;rains.forEach((r,i)=>{const px=x(i),py=yR(r);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);});ctx.stroke();ctx.setLineDash([]);
+      rains.forEach((r,i)=>{const px=x(i),py=yR(r);ctx.fillStyle='#2b8ee2';ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill();ctx.fillStyle='#17699f';ctx.font='800 11px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(`${Number(r).toFixed(1)}`,px,py+18);});
+      ctx.textAlign='left';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyPrefs();
+      loadDayWeather();
+    });
+
+    // Refresh live weather automatically whenever the site opens or becomes visible again.
+    let weatherRefreshTimer=null;
+    function autoRefreshWeather(){
+      clearTimeout(weatherRefreshTimer);
+      weatherRefreshTimer=setTimeout(()=>{ if(typeof loadDayWeather==='function') loadDayWeather(); },120);
+    }
+    document.addEventListener('DOMContentLoaded', autoRefreshWeather);
+    window.addEventListener('load', autoRefreshWeather);
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) autoRefreshWeather(); });
+
+</script>
+
+<script>
+(() => {
+  const applyTheme = (dark) => {
+    document.documentElement.classList.toggle('dark', dark);
+    document.body.classList.toggle('night', dark);
+    try { localStorage.setItem('mode', dark ? 'night' : 'day'); } catch(e) {}
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle=document.getElementById('mode-toggle');
+    if (!toggle) return;
+    let saved='day'; try { saved=localStorage.getItem('mode') || 'day'; } catch(e) {}
+    toggle.checked = saved==='night';
+    applyTheme(toggle.checked);
+    toggle.addEventListener('change', () => applyTheme(toggle.checked));
+  });
+})();
+</script>
+</body>
+</html>
