@@ -653,24 +653,17 @@
       .routes-grid { grid-template-columns: 1fr; }
     }
 
-@media (max-width: 760px) {
-      /* Force a better aspect ratio for the chart on phones */
-      #weatherChart {
-        min-height: 380px !important;
-        width: 100% !important;
-      }
-      
-      /* Make legend text larger for touch screens */
-      #chartLegend {
-        font-size: 16px !important;
-        gap: 15px !important;
-        padding-top: 10px;
-      }
-      
-      /* Add breathing room around the chart */
-      .routes-card {
-        padding: 20px 10px !important;
-      }
+    @media (max-width: 760px) {
+      .shell, .topbar-inner { width: min(calc(100% - 20px), var(--max)); }
+      .topbar-inner { flex-direction: row; align-items: center; }
+      .nav { display: none; }
+      .hero-card, .hero-content { min-height: auto; }
+      .hero-content { padding: 24px; }
+      .hero-card { border-radius: 24px; }
+      h1 { font-size: 44px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .day-cover { min-height: 200px; padding: 18px; }
+      .day-body, .summary-card, .routes-card { padding: 16px; }
     }
   
     .flight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
@@ -2109,7 +2102,7 @@ Afternoon" data-ru="Отдых в Колико
     
     document.addEventListener('visibilitychange',()=>{ if(!document.hidden) loadDayWeather(); });
 
-    function toggleMobileNav() {
+function toggleMobileNav() {
       const nav = document.getElementById('mobile-nav');
       const btn = document.getElementById('hamburger-btn');
       const isOpen = nav.classList.toggle('open');
