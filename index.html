@@ -56,7 +56,15 @@
         radial-gradient(circle at 80% 0%, rgba(43,142,226,0.14), transparent 24%),
         linear-gradient(180deg, #f7f4ee 0%, #f1ede6 100%);
       line-height: 1.5;
+      transition: none !important;
     }
+    
+    body, body::before, .glass, .day-card, .hotel-card, .routes-card, .summary-card, .flight-card, .weather-card {
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
 
     img { display: block; max-width: 100%; }
     a { color: inherit; }
@@ -873,6 +881,7 @@
 <nav class="nav" id="desktop-nav">
 <a href="#stays">Отели</a>
 <a href="#full-pdf">Полный маршрут</a>
+<a href="#weather-chart">Погода</a>
 <a href="#routes">Google Maps</a>
 </nav>
 <button aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню" class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()">
@@ -891,6 +900,7 @@
 <nav aria-label="Мобильное меню" class="mobile-nav shell" id="mobile-nav">
 <a href="#stays" onclick="closeMobileNav()">Отели</a>
 <a href="#full-pdf" onclick="closeMobileNav()">Полный маршрут</a>
+<a href="#weather-chart" onclick="closeMobileNav()">Погода</a>
 <a href="#routes" onclick="closeMobileNav()">Google Maps</a>
 </nav>
 <main class="shell" id="top">
@@ -1691,7 +1701,7 @@ Afternoon" data-ru="Отдых в Колико
     </footer>
 </main>
 <script>
-  /* ── Guaranteed Custom Smooth Nav Scroll ── */
+    /* ── Guaranteed Custom Smooth Nav Scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -1740,6 +1750,7 @@ Afternoon" data-ru="Отдых в Колико
         window.requestAnimationFrame(step);
       });
     });
+
     const weatherPoints = [
       { name:'Bergamo, Italy',            lat:45.66907, lon:9.70504,  date:'2026-07-28' },
       { name:'Molveno, Italy',            lat:46.14159, lon:10.96792, date:'2026-07-29' },
@@ -1755,90 +1766,18 @@ Afternoon" data-ru="Отдых в Колико
       { name:'Colico, Italy',             lat:46.13815, lon:9.37554,  date:'2026-08-08' }
     ];
 
-    const dict = {
-      ru: {
-        nav:['Обзор','Карта','Отели','Полный маршрут','График погоды'],
-        heroTitle:'Полный текст из базового PDF внутри сайта',
-        heroSub:'Я оставил премиальный стиль сайта, карту, hotel icons и кнопки Google Maps, но вернул внутрь сайта абсолютно весь текст из базового PDF — включая телефоны, GPS, заметки и формулировки.',
-        overview:'Обзор маршрута', map:'Карта маршрута', stays:'Базы проживания',
-        flights:'Полеты туда-обратно', fullRoute:'Полный маршрут из PDF',
-        weatherChart:'График погоды', routes:'Быстрые ссылки Google Maps',
-        weather:'Погода', update:'Обновить данные',
-        legMax:'Макс. темп.', legMin:'Мин. темп.', legRain:'Осадки',
-        chartHeader:'12-дневный прогноз', chartSub:'макс / мин · осадки',
-        ttMax:'Макс', ttMin:'Мин', ttRain:'Осадки',
-        liveBadge:'🔴 прогноз', climBadge:'📊 ср. климат',
-        liveTitle:'Реальный прогноз погоды на эту дату',
-        climTitle:'Среднее за 5 лет на эту дату. Автоматически переключится на реальный прогноз за 15 дней до поездки.',
-        updating:'Обновление…', updated:'Обновлено ✓', error:'Ошибка, повторить'
-      },
-      en: {
-        nav:['Overview','Map','Stays','Full route','Weather chart'],
-        heroTitle:'Full PDF text preserved in the site',
-        heroSub:'I kept the premium site style, map, hotel icons and Google Maps buttons — and restored all the text from the base PDF inside the site, including phone numbers, GPS, notes and wording.',
-        overview:'Route overview', map:'Route map', stays:'Accommodations',
-        flights:'Flights', fullRoute:'Full route from PDF',
-        weatherChart:'Weather chart', routes:'Quick Google Maps links',
-        weather:'Weather', update:'Refresh data',
-        legMax:'Max temp.', legMin:'Min temp.', legRain:'Precipitation',
-        chartHeader:'12-day forecast', chartSub:'max / min · precipitation',
-        ttMax:'Max', ttMin:'Min', ttRain:'Rain',
-        liveBadge:'🔴 forecast', climBadge:'📊 avg. climate',
-        liveTitle:'Real weather forecast for this date',
-        climTitle:'5-year average for this calendar date. Switches to a real forecast automatically within 15 days of the trip.',
-        updating:'Updating…', updated:'Updated ✓', error:'Error, retry'
-      }
-    };
-
+    function applyPrefs() {
+      const mode = localStorage.getItem('mode') || 'day';
+      document.documentElement.lang = 'ru';
+      document.documentElement.dir = 'ltr';
+      setMode(mode);
+    }
+    
     function setMode(mode){
       localStorage.setItem('mode', mode);
       if(mode==='night'){ document.body.classList.add('night'); document.documentElement.classList.add('dark'); }
       else { document.body.classList.remove('night'); document.documentElement.classList.remove('dark'); }
       const cb=document.getElementById('mode-toggle'); if(cb) cb.checked=(mode==='night');
-    }
-
-    function applyPrefs(){
-      const lang=localStorage.getItem('lang')||'ru';
-      const mode=localStorage.getItem('mode')||'day';
-      document.documentElement.lang=lang; document.documentElement.dir='ltr';
-      translateUI(lang); setMode(mode);
-      if(lang==='en') applyLang('en');
-    }
-
-    function translateUI(lang){
-      const t=dict[lang]||dict.ru;
-      document.querySelectorAll('#desktop-nav a, #mobile-nav a').forEach((a,i)=>{ const idx=i%t.nav.length; if(t.nav[idx]) a.textContent=t.nav[idx]; });
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key=el.getAttribute('data-i18n');
-        if(t[key]) el.textContent=t[key];
-      });
-      const h1=document.querySelector('h1'); if(h1) h1.textContent=t.heroTitle;
-      const heroSub=document.querySelector('.hero-sub'); if(heroSub) heroSub.textContent=t.heroSub;
-      document.querySelectorAll('.weather-chip').forEach(ch=>{ if(['Погода','Weather'].includes(ch.textContent)) ch.textContent=t.weather; });
-      document.querySelectorAll('.btn-map').forEach(b=>{ if(['Обновить данные','Refresh data','Update data'].includes(b.textContent)) b.textContent=t.update; });
-      const lMax=document.getElementById('leg-max-lbl'); if(lMax) lMax.textContent=t.legMax;
-      const lMin=document.getElementById('leg-min-lbl'); if(lMin) lMin.textContent=t.legMin;
-      const lRain=document.getElementById('leg-rain-lbl'); if(lRain) lRain.textContent=t.legRain;
-      if(window._chartData) drawWeatherChart(...window._chartData);
-      document.querySelectorAll('[id^="weather-badge-"]').forEach(el=>{
-        if(['🔴 прогноз','🔴 forecast'].includes(el.textContent)){ el.textContent=t.liveBadge; el.title=t.liveTitle; }
-        else if(['📊 ср. климат','📊 avg. climate'].includes(el.textContent)){ el.textContent=t.climBadge; el.title=t.climTitle; }
-      });
-    }
-
-    // ── Instant RU/EN swap using data-ru / data-en baked into elements ──────
-    function applyLang(lang){
-      document.querySelectorAll('[data-ru][data-en]').forEach(el=>{
-        el.textContent = lang==='en' ? el.dataset.en : el.dataset.ru;
-      });
-    }
-    function toggleLang(){
-      const cur=localStorage.getItem('lang')||'ru';
-      const next=cur==='ru'?'en':'ru';
-      localStorage.setItem('lang',next);
-      document.documentElement.lang=next;
-      applyLang(next);
-      translateUI(next);
     }
 
     // ── WMO weather codes (Open-Meteo) ───────────────────────────────────────
@@ -1850,6 +1789,7 @@ Afternoon" data-ru="Отдых в Колико
       if([71,73,75,77,85,86].includes(code)) return '❄️';
       if([95,96,99].includes(code)) return '⛈️'; return '🌡️';
     }
+    
     function bgClass(code){
       code=parseInt(code,10);
       if(code===0||[1,2].includes(code)) return 'sunny';
@@ -1863,11 +1803,13 @@ Afternoon" data-ru="Отдых в Колико
       const [y,m,d]=dateStr.split('-').map(Number);
       return `${y-years}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     }
+    
     function daysUntil(dateStr){
       const today=new Date(); today.setHours(0,0,0,0);
       const [y,m,d]=dateStr.split('-').map(Number);
       return Math.round((new Date(y,m-1,d)-today)/86400000);
     }
+    
     async function fetchBatch(baseUrl, points, startDate, endDate, dailyParams){
       const lats=points.map(p=>p.lat).join(',');
       const lons=points.map(p=>p.lon).join(',');
@@ -1933,8 +1875,6 @@ Afternoon" data-ru="Отдых в Колико
         });
       }
 
-      const lang=localStorage.getItem('lang')||'ru';
-      const t=dict[lang]||dict.ru;
       weatherPoints.forEach((p,i)=>{
         const minEl=document.getElementById(`weather-min-${i+1}`);
         const maxEl=document.getElementById(`weather-max-${i+1}`);
@@ -1944,24 +1884,36 @@ Afternoon" data-ru="Отдых в Колико
         const card=document.querySelector(`[data-weather-day="${i+1}"]`);
         const bar=document.getElementById(`weather-bar-${i+1}`);
         const res=perPoint[i];
+        
         if(!res){
           ok=false;
           if(minEl) minEl.textContent='min --°'; if(maxEl) maxEl.textContent='max --°'; if(rainEl) rainEl.textContent='rain -- mm'; if(iconEl) iconEl.textContent='🌡️'; if(badge) badge.textContent='—'; if(bar) bar.style.width='15%';
           temps.push(0); mins.push(0); rains.push(0); return;
         }
+        
         if(minEl) minEl.textContent=`min ${Math.round(res.minT)}°`;
         if(maxEl) maxEl.textContent=`max ${Math.round(res.maxT)}°`;
         if(rainEl) rainEl.textContent=`rain ${Number(res.rain).toFixed(1)} mm`;
         if(iconEl) iconEl.textContent=codeToIcon(res.code);
-        if(badge){ badge.textContent=res.mode==='live'?t.liveBadge:t.climBadge; badge.title=res.mode==='live'?t.liveTitle:t.climTitle; }
+        
+        if(badge){ 
+          badge.textContent = res.mode === 'live' ? '🔴 прогноз' : '📊 ср. климат'; 
+          badge.title = res.mode === 'live' ? 'Реальный прогноз погоды на эту дату' : 'Среднее за 5 лет на эту дату. Автоматически переключится на реальный прогноз за 15 дней до поездки.'; 
+        }
         if(card){ card.classList.remove('sunny','cloudy','rainy'); card.classList.add(bgClass(res.code)); }
+        
         temps.push(res.maxT); mins.push(res.minT); rains.push(res.rain);
         if(bar) bar.style.width=Math.max(15,Math.min(100,res.rain*20+(res.maxT-8)*2))+'%';
       });
 
       drawWeatherChart(temps,mins,rains);
       const now=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
-      buttons.forEach(b=>{ b.disabled=false; b.textContent=ok?`Обновлено ✓ ${now}`:t.error; clearTimeout(b._rt); b._rt=setTimeout(()=>{ b.textContent=b.dataset.origText; },2500); });
+      buttons.forEach(b=>{ 
+        b.disabled=false; 
+        b.textContent=ok?`Обновлено ✓ ${now}`:'Ошибка, повторить'; 
+        clearTimeout(b._rt); 
+        b._rt=setTimeout(()=>{ b.textContent=b.dataset.origText; },2500); 
+      });
     }
 
     // ── iOS Weather-style chart with hover tooltip + legend toggle ────────────
@@ -1978,6 +1930,7 @@ Afternoon" data-ru="Отдых в Колико
       const rad=Math.max(0,Math.min(r,Math.abs(w)/2,Math.abs(h)/2));
       ctx.beginPath(); ctx.moveTo(x+rad,y); ctx.arcTo(x+w,y,x+w,y+h,rad); ctx.arcTo(x+w,y+h,x,y+h,rad); ctx.arcTo(x,y+h,x,y,rad); ctx.arcTo(x,y,x+w,y,rad); ctx.closePath();
     }
+    
     function drawWeatherChart(temps,mins,rains){
       window._chartData=[temps,mins,rains];
       const canvas=document.getElementById('weatherChart'); if(!canvas) return;
@@ -1987,17 +1940,24 @@ Afternoon" data-ru="Отдых в Колико
       const n=temps.length;
       const maxT=Math.max(...temps,...mins)+4,minT=Math.min(...temps,...mins)-4;
       const maxR=Math.max(5,Math.ceil(Math.max(...rains,1)/5)*5);
+      
       const xAt=i=>n>1?left+(plotW/(n-1))*i:left+plotW/2;
       const yT=v=>top+plotH-((v-minT)/(maxT-minT))*plotH;
       const yR=v=>top+plotH-(v/maxR)*plotH;
-      const lang=localStorage.getItem('lang')||'ru';
-      const t=dict[lang]||dict.ru;
+      
       ctx.clearRect(0,0,w,h);
       const bg=ctx.createLinearGradient(0,0,0,h); bg.addColorStop(0,'#232a3d'); bg.addColorStop(1,'#12151f');
       ctx.fillStyle=bg; roundRect(ctx,0,0,w,h,24); ctx.fill();
-      [0.25,0.5,0.75].forEach(f=>{ const gy=top+plotH*f; ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(left,gy); ctx.lineTo(w-right,gy); ctx.stroke(); });
+      
+      [0.25,0.5,0.75].forEach(f=>{ 
+        const gy=top+plotH*f; 
+        ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1; 
+        ctx.beginPath(); ctx.moveTo(left,gy); ctx.lineTo(w-right,gy); ctx.stroke(); 
+      });
+      
       ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.textAlign='center';
-      for(let i=0;i<n;i++) ctx.fillText(lang==='ru'?`Д${i+1}`:`D${i+1}`,xAt(i),h-20);
+      for(let i=0;i<n;i++) ctx.fillText(`Д${i+1}`,xAt(i),h-20);
+      
       if(legendVis.rain){
         const barW=Math.min(18,plotW/(n*2));
         for(let i=0;i<n;i++){
@@ -2007,8 +1967,10 @@ Afternoon" data-ru="Отдых в Колико
           ctx.fillStyle=g; roundRect(ctx,px-barW/2,py,barW,(top+plotH)-py,6); ctx.fill();
         }
       }
+      
       const maxPts=temps.map((v,i)=>[xAt(i),yT(v)]);
       const minPts=mins.map((v,i)=>[xAt(i),yT(v)]);
+      
       if(legendVis.max){
         ctx.save(); ctx.beginPath(); smoothPath(ctx,maxPts); ctx.lineTo(maxPts[maxPts.length-1][0],top+plotH); ctx.lineTo(maxPts[0][0],top+plotH); ctx.closePath();
         const fg=ctx.createLinearGradient(0,top,0,top+plotH); fg.addColorStop(0,'rgba(255,159,67,0.35)'); fg.addColorStop(1,'rgba(255,159,67,0)');
@@ -2018,15 +1980,17 @@ Afternoon" data-ru="Отдых в Колико
         ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.textAlign='center';
         temps.forEach((v,i)=>{ const [px,py]=maxPts[i]; ctx.fillStyle='#ffb066'; ctx.fillText(`${Math.round(v)}°`,px,py-12); ctx.beginPath(); ctx.fillStyle='#ff9f43'; ctx.arc(px,py,3,0,Math.PI*2); ctx.fill(); });
       }
+      
       if(legendVis.min){
         ctx.save(); ctx.shadowColor='rgba(120,140,255,0.6)'; ctx.shadowBlur=10;
         ctx.beginPath(); smoothPath(ctx,minPts); ctx.strokeStyle='rgba(160,175,255,0.85)'; ctx.lineWidth=2; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
         ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.textAlign='center';
         mins.forEach((v,i)=>{ const [px,py]=minPts[i]; ctx.fillStyle='rgba(200,208,255,0.85)'; ctx.fillText(`${Math.round(v)}°`,px,py+18); ctx.beginPath(); ctx.fillStyle='rgba(160,175,255,0.9)'; ctx.arc(px,py,2,0,Math.PI*2); ctx.fill(); });
       }
+      
       ctx.textAlign='left';
-      ctx.font='600 13px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fillText(t.chartHeader,left,30);
-      ctx.font='400 12px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fillText(t.chartSub,left,48);
+      ctx.font='600 13px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fillText('12-дневный прогноз',left,30);
+      ctx.font='400 12px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fillText('макс / мин · осадки',left,48);
       canvas._chartLayout={xAt,yT,yR,maxPts,minPts,rains,n,left,right,top,bottom,plotW,plotH,w,h};
     }
 
@@ -2034,38 +1998,57 @@ Afternoon" data-ru="Отдых в Колико
       const canvas=document.getElementById('weatherChart');
       const tip=document.getElementById('chartTooltip');
       if(!canvas||!tip) return;
-      function canvasXY(e){ const rect=canvas.getBoundingClientRect(),scaleX=canvas.width/rect.width,scaleY=canvas.height/rect.height,cx=(e.clientX||e.touches?.[0]?.clientX||0)-rect.left,cy=(e.clientY||e.touches?.[0]?.clientY||0)-rect.top; return [cx*scaleX,cy*scaleY,cx,cy,rect]; }
+      
+      function canvasXY(e){ 
+        const rect=canvas.getBoundingClientRect(),
+              scaleX=canvas.width/rect.width,
+              scaleY=canvas.height/rect.height,
+              cx=(e.clientX||e.touches?.[0]?.clientX||0)-rect.left,
+              cy=(e.clientY||e.touches?.[0]?.clientY||0)-rect.top; 
+        return [cx*scaleX,cy*scaleY,cx,cy,rect]; 
+      }
+      
       function showTip(e){
         const layout=canvas._chartLayout; if(!layout) return;
         const [cx,cy,clientX,clientY,rect]=canvasXY(e);
         const {xAt,n,left,right,top,plotW,plotH,w,h}=layout;
+        
         if(cx<left||cx>w-right||cy<top||cy>top+plotH){ tip.style.display='none'; return; }
+        
         let best=0,bestDist=Infinity;
         for(let i=0;i<n;i++){ const d=Math.abs(cx-xAt(i)); if(d<bestDist){bestDist=d;best=i;} }
         if(bestDist>plotW/n){ tip.style.display='none'; return; }
+        
         const d=window._chartData; if(!d) return;
-        const lang=localStorage.getItem('lang')||'ru';
-        const tr=dict[lang]||dict.ru;
+
         const loc=weatherPoints[best];
-        const dayLabel=lang==='ru'?`День ${best+1}`:`Day ${best+1}`;
+        const dayLabel=`День ${best+1}`;
+        
         tip.innerHTML=`<div style="color:#ff9f43;font-size:15px;margin-bottom:4px">${dayLabel} — ${loc.name.split(',')[0]}</div>`+
-          (legendVis.max?`<div>${tr.ttMax}: <b style="color:#ffb066">${Math.round(d[0][best])}°C</b></div>`:'')+
-          (legendVis.min?`<div>${tr.ttMin}: <b style="color:#a0afff">${Math.round(d[1][best])}°C</b></div>`:'')+
-          (legendVis.rain?`<div>${tr.ttRain}: <b style="color:#40aaff">${Number(d[2][best]).toFixed(1)} mm</b></div>`:'')+
+          (legendVis.max?`<div>Макс: <b style="color:#ffb066">${Math.round(d[0][best])}°C</b></div>`:'')+
+          (legendVis.min?`<div>Мин: <b style="color:#a0afff">${Math.round(d[1][best])}°C</b></div>`:'')+
+          (legendVis.rain?`<div>Осадки: <b style="color:#40aaff">${Number(d[2][best]).toFixed(1)} mm</b></div>`:'')+
           `<div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">${loc.date}</div>`;
+        
         tip.style.display='block';
         const tw=tip.offsetWidth||180,th=tip.offsetHeight||90;
         let tx=clientX+14,ty=clientY-th/2;
         if(tx+tw>rect.width) tx=clientX-tw-14; if(ty<0) ty=0; if(ty+th>rect.height) ty=rect.height-th;
         tip.style.left=tx+'px'; tip.style.top=ty+'px';
       }
+      
       canvas.addEventListener('mousemove',showTip);
       canvas.addEventListener('touchmove',e=>{e.preventDefault();showTip(e);},{passive:false});
       canvas.addEventListener('mouseleave',()=>{ tip.style.display='none'; });
       canvas.addEventListener('touchend',()=>{ setTimeout(()=>tip.style.display='none',800); });
+      
       ['max','min','rain'].forEach(key=>{
         const el=document.getElementById(`leg-${key}`); if(!el) return;
-        el.addEventListener('click',()=>{ legendVis[key]=!legendVis[key]; el.style.opacity=legendVis[key]?'1':'0.3'; if(window._chartData) drawWeatherChart(...window._chartData); });
+        el.addEventListener('click',()=>{ 
+          legendVis[key]=!legendVis[key]; 
+          el.style.opacity=legendVis[key]?'1':'0.3'; 
+          if(window._chartData) drawWeatherChart(...window._chartData); 
+        });
       });
     }
 
@@ -2074,10 +2057,15 @@ Afternoon" data-ru="Отдых в Колико
       loadDayWeather();
       initChartInteraction();
       const toggle=document.getElementById('mode-toggle');
-      if(toggle){ let saved='day'; try{ saved=localStorage.getItem('mode')||'day'; }catch(e){} toggle.checked=saved==='night'; toggle.addEventListener('change',()=>setMode(toggle.checked?'night':'day')); }
+      if(toggle){ 
+        let saved='day'; 
+        try{ saved=localStorage.getItem('mode')||'day'; }catch(e){} 
+        toggle.checked=saved==='night'; 
+        toggle.addEventListener('change',()=>setMode(toggle.checked?'night':'day')); 
+      }
     });
+    
     document.addEventListener('visibilitychange',()=>{ if(!document.hidden) loadDayWeather(); });
-
 
     function toggleMobileNav(){
       const nav=document.getElementById('mobile-nav');
@@ -2086,6 +2074,7 @@ Afternoon" data-ru="Отдых в Колико
       btn.classList.toggle('open',open);
       btn.setAttribute('aria-expanded', open);
     }
+    
     function closeMobileNav(){
       document.getElementById('mobile-nav').classList.remove('open');
       const btn=document.getElementById('hamburger-btn');
