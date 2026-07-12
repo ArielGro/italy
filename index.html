@@ -44,7 +44,9 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth !important;
+    }
     body {
       margin: 0;
       font-family: Inter, sans-serif;
@@ -58,7 +60,7 @@
 
     img { display: block; max-width: 100%; }
     a { color: inherit; }
-
+    a:hover {transition: color 0.15s ease; color: var(--orange); }
     .shell {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
@@ -748,7 +750,7 @@
     body.night .hero-sub{ color: rgba(255,255,255,0.86) !important; }
     body.night .toggle-label{ color: var(--muted) !important; }
 
-  body{transition:background 0.3s ease, color 0.3s ease} .glass, .day-card, .weather-card{transition:background 0.3s ease, border-color 0.3s ease, color 0.3s ease}
+  body{transition:background 0.4s ease, color 0.4s ease}
   
     /* Comprehensive, high-contrast Dark Mode: visual overrides only */
     html.dark, html.dark body, body.night {
@@ -781,14 +783,7 @@
     html.dark .weather-card::before, body.night .weather-card::before { opacity:.05 !important; }
 
   
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
+
 
     .hamburger {
       display: none;
@@ -845,19 +840,19 @@
       outline-offset: 3px;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+
+    /* ── Nav hover animation ── */
+    .nav a {
+      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
     }
-    .day-card {
-      animation: fadeUp 0.4s ease-out both;
+    .nav a:hover {
+      background: rgba(255,255,255,0.92);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(29,43,56,0.10);
     }
-    .day-card:nth-child(1) { animation-delay: 0.05s; }
-    .day-card:nth-child(2) { animation-delay: 0.10s; }
-    .day-card:nth-child(3) { animation-delay: 0.15s; }
-    .day-card:nth-child(4) { animation-delay: 0.20s; }
-    .day-card:nth-child(5) { animation-delay: 0.25s; }
-    .day-card:nth-child(6) { animation-delay: 0.30s; }
+    .nav a:active {
+      transform: translateY(0);
+    }
 </style>
 </head>
 <body>
@@ -890,7 +885,6 @@
 <span class="slider-track"><span class="slider-knob"></span></span>
 </label>
 <span class="toggle-label">Dark</span>
-<button aria-label="Переключить язык / Switch language" id="lang-btn" onclick="toggleLang()" style="margin-left:8px;padding:6px 14px;border-radius:20px;border:1.5px solid var(--orange);background:transparent;color:var(--orange);font:700 13px Inter,sans-serif;cursor:pointer;transition:all .2s;">RU / EN</button>
 </div>
 </div>
 </header>
@@ -1697,6 +1691,55 @@ Afternoon" data-ru="Отдых в Колико
     </footer>
 </main>
 <script>
+  /* ── Guaranteed Custom Smooth Nav Scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        
+        e.preventDefault();
+        
+        // Close mobile menu if it's open
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileNav && mobileNav.classList.contains('open')) {
+          closeMobileNav();
+        }
+
+        // Calculate distances factoring in the sticky header
+        const topbarH = document.querySelector('.topbar').offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - topbarH - 8;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        
+        // Animation settings (600ms duration)
+        const duration = 600; 
+        let start = null;
+
+        // Custom easing function (Ease-in-out cubic) for a natural glide
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const percentage = Math.min(progress / duration, 1);
+          
+          const easeInOutCubic = percentage < 0.5 
+            ? 4 * percentage * percentage * percentage 
+            : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+          
+          window.scrollTo(0, startPosition + distance * easeInOutCubic);
+          
+          if (progress < duration) {
+            window.requestAnimationFrame(step);
+          } else {
+            window.scrollTo(0, targetPosition); // Snap exactly to the pixel at the end
+          }
+        }
+        
+        window.requestAnimationFrame(step);
+      });
+    });
     const weatherPoints = [
       { name:'Bergamo, Italy',            lat:45.66907, lon:9.70504,  date:'2026-07-28' },
       { name:'Molveno, Italy',            lat:46.14159, lon:10.96792, date:'2026-07-29' },
@@ -2034,6 +2077,7 @@ Afternoon" data-ru="Отдых в Колико
       if(toggle){ let saved='day'; try{ saved=localStorage.getItem('mode')||'day'; }catch(e){} toggle.checked=saved==='night'; toggle.addEventListener('change',()=>setMode(toggle.checked?'night':'day')); }
     });
     document.addEventListener('visibilitychange',()=>{ if(!document.hidden) loadDayWeather(); });
+
 
     function toggleMobileNav(){
       const nav=document.getElementById('mobile-nav');
