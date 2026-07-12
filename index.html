@@ -673,6 +673,24 @@
     .flight-links{display:flex;gap:10px;flex-wrap:wrap}
     @media (max-width:760px){.flight-grid{grid-template-columns:1fr}}
 
+    @media (max-width: 760px) {
+  /* Increase graph area height on mobile */
+  #weatherChart {
+    min-height: 320px !important;
+  }
+  
+  /* Make the legend more readable */
+  #chartLegend {
+    font-size: 15px !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+  
+  /* Add more padding to the chart wrapper */
+  .chart-wrap {
+    padding: 24px !important;
+  }
+}
   
     .weather-card{padding:18px;margin:0 0 16px}
     .weather-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
@@ -816,23 +834,32 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav {
+.mobile-nav {
       display: none;
+      position: fixed; /* Fixes it to the screen, not the page top */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--bg);
+      z-index: 999;
       flex-direction: column;
-      gap: 8px;
-      padding: 12px 16px 16px;
-      border-top: 1px solid rgba(29,43,56,0.08);
+      justify-content: center; /* Centers links vertically */
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      transition: opacity 0.3s ease;
+      opacity: 0;
     }
-    .mobile-nav.open { display: flex; }
+    .mobile-nav.open { 
+      display: flex; 
+      opacity: 1; 
+    }
     .mobile-nav a {
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--blue);
-      padding: 12px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.58);
-      border: 1px solid rgba(29,43,56,0.08);
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+      padding: 18px;
     }
     @media (max-width: 760px) {
       .hamburger { display: flex; }
