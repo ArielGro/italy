@@ -1962,31 +1962,44 @@ Afternoon" data-ru="Отдых в Колико
       window._chartData=[temps,mins,rains];
       const canvas=document.getElementById('weatherChart'); if(!canvas) return;
       const ctx=canvas.getContext('2d');
-      const w=canvas.width,h=canvas.height;
-      const left=54,right=54,top=64,bottom=52,plotW=w-left-right,plotH=h-top-bottom;
+
+      // Responsive: size canvas to actual CSS width with DPR sharpness
+      const dpr=window.devicePixelRatio||1;
+      const cssW=canvas.parentElement.offsetWidth||canvas.offsetWidth||360;
+      const mobile=cssW<600;
+      const cssH=mobile?300:420;
+      canvas.width=Math.round(cssW*dpr);
+      canvas.height=Math.round(cssH*dpr);
+      canvas.style.height=cssH+'px';
+      ctx.scale(dpr,dpr);
+      const w=cssW,h=cssH;
+
+      const fs=mobile?15:12;
+      const left=mobile?38:54,right=mobile?10:54,top=mobile?52:64,bottom=mobile?40:52;
+      const plotW=w-left-right,plotH=h-top-bottom;
       const n=temps.length;
       const maxT=Math.max(...temps,...mins)+4,minT=Math.min(...temps,...mins)-4;
       const maxR=Math.max(5,Math.ceil(Math.max(...rains,1)/5)*5);
-      
+
       const xAt=i=>n>1?left+(plotW/(n-1))*i:left+plotW/2;
       const yT=v=>top+plotH-((v-minT)/(maxT-minT))*plotH;
       const yR=v=>top+plotH-(v/maxR)*plotH;
-      
+
       ctx.clearRect(0,0,w,h);
       const bg=ctx.createLinearGradient(0,0,0,h); bg.addColorStop(0,'#232a3d'); bg.addColorStop(1,'#12151f');
-      ctx.fillStyle=bg; roundRect(ctx,0,0,w,h,24); ctx.fill();
-      
-      [0.25,0.5,0.75].forEach(f=>{ 
-        const gy=top+plotH*f; 
-        ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1; 
-        ctx.beginPath(); ctx.moveTo(left,gy); ctx.lineTo(w-right,gy); ctx.stroke(); 
+      ctx.fillStyle=bg; roundRect(ctx,0,0,w,h,mobile?16:24); ctx.fill();
+
+      [0.25,0.5,0.75].forEach(f=>{
+        const gy=top+plotH*f;
+        ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(left,gy); ctx.lineTo(w-right,gy); ctx.stroke();
       });
-      
-      ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.textAlign='center';
-      for(let i=0;i<n;i++) ctx.fillText(`Д${i+1}`,xAt(i),h-20);
-      
+
+      ctx.font=`600 ${fs}px -apple-system,Inter,sans-serif`; ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.textAlign='center';
+      for(let i=0;i<n;i++) ctx.fillText(`Д${i+1}`,xAt(i),h-12);
+
       if(legendVis.rain){
-        const barW=Math.min(18,plotW/(n*2));
+        const barW=Math.min(mobile?12:18,plotW/(n*2));
         for(let i=0;i<n;i++){
           const r=rains[i]; if(r<=0) continue;
           const px=xAt(i),py=yR(r);
@@ -1994,30 +2007,30 @@ Afternoon" data-ru="Отдых в Колико
           ctx.fillStyle=g; roundRect(ctx,px-barW/2,py,barW,(top+plotH)-py,6); ctx.fill();
         }
       }
-      
+
       const maxPts=temps.map((v,i)=>[xAt(i),yT(v)]);
       const minPts=mins.map((v,i)=>[xAt(i),yT(v)]);
-      
+
       if(legendVis.max){
         ctx.save(); ctx.beginPath(); smoothPath(ctx,maxPts); ctx.lineTo(maxPts[maxPts.length-1][0],top+plotH); ctx.lineTo(maxPts[0][0],top+plotH); ctx.closePath();
         const fg=ctx.createLinearGradient(0,top,0,top+plotH); fg.addColorStop(0,'rgba(255,159,67,0.35)'); fg.addColorStop(1,'rgba(255,159,67,0)');
         ctx.fillStyle=fg; ctx.fill(); ctx.restore();
         ctx.save(); ctx.shadowColor='rgba(255,150,60,0.85)'; ctx.shadowBlur=14;
-        ctx.beginPath(); smoothPath(ctx,maxPts); ctx.strokeStyle='#ff9f43'; ctx.lineWidth=3; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-        ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.textAlign='center';
-        temps.forEach((v,i)=>{ const [px,py]=maxPts[i]; ctx.fillStyle='#ffb066'; ctx.fillText(`${Math.round(v)}°`,px,py-12); ctx.beginPath(); ctx.fillStyle='#ff9f43'; ctx.arc(px,py,3,0,Math.PI*2); ctx.fill(); });
+        ctx.beginPath(); smoothPath(ctx,maxPts); ctx.strokeStyle='#ff9f43'; ctx.lineWidth=mobile?3:3; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+        ctx.font=`700 ${fs+2}px -apple-system,Inter,sans-serif`; ctx.textAlign='center';
+        temps.forEach((v,i)=>{ const [px,py]=maxPts[i]; ctx.fillStyle='#ffb066'; ctx.fillText(`${Math.round(v)}°`,px,py-(mobile?11:12)); ctx.beginPath(); ctx.fillStyle='#ff9f43'; ctx.arc(px,py,mobile?4:3,0,Math.PI*2); ctx.fill(); });
       }
-      
+
       if(legendVis.min){
         ctx.save(); ctx.shadowColor='rgba(120,140,255,0.6)'; ctx.shadowBlur=10;
         ctx.beginPath(); smoothPath(ctx,minPts); ctx.strokeStyle='rgba(160,175,255,0.85)'; ctx.lineWidth=2; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-        ctx.font='600 12px -apple-system,Inter,sans-serif'; ctx.textAlign='center';
-        mins.forEach((v,i)=>{ const [px,py]=minPts[i]; ctx.fillStyle='rgba(200,208,255,0.85)'; ctx.fillText(`${Math.round(v)}°`,px,py+18); ctx.beginPath(); ctx.fillStyle='rgba(160,175,255,0.9)'; ctx.arc(px,py,2,0,Math.PI*2); ctx.fill(); });
+        ctx.font=`600 ${fs+1}px -apple-system,Inter,sans-serif`; ctx.textAlign='center';
+        mins.forEach((v,i)=>{ const [px,py]=minPts[i]; ctx.fillStyle='rgba(200,208,255,0.85)'; ctx.fillText(`${Math.round(v)}°`,px,py+(mobile?17:18)); ctx.beginPath(); ctx.fillStyle='rgba(160,175,255,0.9)'; ctx.arc(px,py,mobile?3:2,0,Math.PI*2); ctx.fill(); });
       }
-      
+
       ctx.textAlign='left';
-      ctx.font='600 13px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fillText('12-дневный прогноз',left,30);
-      ctx.font='400 12px -apple-system,Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fillText('макс / мин · осадки',left,48);
+      ctx.font=`600 13px -apple-system,Inter,sans-serif`; ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fillText('12-дневный прогноз',left,24);
+      ctx.font=`400 11px -apple-system,Inter,sans-serif`; ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fillText('макс / мин · осадки',left,40);
       canvas._chartLayout={xAt,yT,yR,maxPts,minPts,rains,n,left,right,top,bottom,plotW,plotH,w,h};
     }
 
@@ -2078,6 +2091,8 @@ Afternoon" data-ru="Отдых в Колико
         });
       });
     }
+
+    window.addEventListener('resize',()=>{ if(window._chartData) drawWeatherChart(...window._chartData); });
 
     document.addEventListener('DOMContentLoaded',()=>{
       applyPrefs();
