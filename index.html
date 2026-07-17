@@ -1845,12 +1845,9 @@ Afternoon" data-ru="Отдых в Колико
       return Math.round((new Date(y,m-1,d)-today)/86400000);
     }
     
-    async function fetchBatch(baseUrl, points, startDate, endDate, dailyParams){
-      const lats=points.map(p=>p.lat).join(',');
-      const lons=points.map(p=>p.lon).join(',');
-      const url=`${baseUrl}?latitude=${lats}&longitude=${lons}&daily=${dailyParams}&timezone=auto&start_date=${startDate}&end_date=${endDate}`;
-      const data=await fetch(url).then(r=>r.json());
-      return Array.isArray(data)?data:[data];
+    async function fetchOne(baseUrl, point, startDate, endDate, dailyParams){
+      const url=`${baseUrl}?latitude=${point.lat}&longitude=${point.lon}&daily=${dailyParams}&timezone=auto&start_date=${startDate}&end_date=${endDate}`;
+      return fetch(url).then(r=>r.json());
     }
 
     async function loadDayWeather(){
@@ -1863,18 +1860,14 @@ Afternoon" data-ru="Отдых в Колико
       const perPoint=new Array(weatherPoints.length).fill(null);
 
       if(live.length){
-        try{
-          const start=live.map(p=>p.date).sort()[0];
-          const end=live.map(p=>p.date).sort().at(-1);
-          const results=await fetchBatch('https://api.open-meteo.com/v1/forecast',live,start,end,'temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode');
-          live.forEach((p,li)=>{
-            const off=Math.round((new Date(p.date)-new Date(start))/86400000);
-            const r=results[li];
-            if(r?.daily?.temperature_2m_max?.[off]!=null){
-              perPoint[p.idx]={ maxT:r.daily.temperature_2m_max[off], minT:r.daily.temperature_2m_min[off], rain:r.daily.precipitation_sum?.[off]??0, code:r.daily.weathercode?.[off]??3, mode:'live' };
+        await Promise.all(live.map(async p=>{
+          try{
+            const r=await fetchOne('https://api.open-meteo.com/v1/forecast',p,p.date,p.date,'temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode');
+            if(r?.daily?.temperature_2m_max?.[0]!=null){
+              perPoint[p.idx]={ maxT:r.daily.temperature_2m_max[0], minT:r.daily.temperature_2m_min[0], rain:r.daily.precipitation_sum?.[0]??0, code:r.daily.weathercode?.[0]??3, mode:'live' };
             }
-          });
-        }catch(e){ ok=false; }
+          }catch(e){ ok=false; }
+        }));
       }
 
       if(hist.length){
@@ -1886,18 +1879,17 @@ Afternoon" data-ru="Отдых в Колико
         if(!accum){
           accum=hist.map(()=>({maxs:[],mins:[],rains:[]}));
           for(let yb=1;yb<=CLIMATE_YEARS;yb++){
-            try{
-              const results=await fetchBatch('https://archive-api.open-meteo.com/v1/archive',hist,shiftYears(start,yb),shiftYears(end,yb),'temperature_2m_max,temperature_2m_min,precipitation_sum');
-              hist.forEach((p,hi)=>{
-                const off=Math.round((new Date(p.date)-new Date(start))/86400000);
-                const r=results[hi];
-                if(r?.daily?.temperature_2m_max?.[off]!=null){
-                  accum[hi].maxs.push(r.daily.temperature_2m_max[off]);
-                  accum[hi].mins.push(r.daily.temperature_2m_min[off]);
-                  accum[hi].rains.push(r.daily.precipitation_sum?.[off]??0);
+            await Promise.all(hist.map(async (p,hi)=>{
+              try{
+                const sd=shiftYears(p.date,yb);
+                const r=await fetchOne('https://archive-api.open-meteo.com/v1/archive',p,sd,sd,'temperature_2m_max,temperature_2m_min,precipitation_sum');
+                if(r?.daily?.temperature_2m_max?.[0]!=null){
+                  accum[hi].maxs.push(r.daily.temperature_2m_max[0]);
+                  accum[hi].mins.push(r.daily.temperature_2m_min[0]);
+                  accum[hi].rains.push(r.daily.precipitation_sum?.[0]??0);
                 }
-              });
-            }catch(e){}
+              }catch(e){}
+            }));
             if(yb<CLIMATE_YEARS) await new Promise(r=>setTimeout(r,600));
           }
           try{ sessionStorage.setItem(cacheKey,JSON.stringify(accum)); }catch(e){}
